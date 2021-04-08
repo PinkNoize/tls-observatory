@@ -1,0 +1,29 @@
+[
+    {
+        "name": "ipv6farm",
+        "files": [
+            {
+                "url": "http://ipv6farm.seclab.cs.ucsb.edu/nxdomain/1492834022/dataset.json.gz",
+                "file": "ipv6farm"
+            }
+        ]
+    },
+    {
+        "name": "ipv6hitlist",
+        "files": [
+            {
+                "url": "https://alcatraz.net.in.tum.de/ipv6-hitlist-service/open/responsive-addresses.txt.xz",
+                "file": "ipv6hitlist.txt.xz"
+            }
+        ]
+    },
+    {
+        "name": "rapid7sonar",
+        "files": [
+            {
+                "url": "https://f002.backblazeb2.com/file/rapid7-opendata/sonar.ssl/20210322/2021-03-22-1616375370-https_get_443_hosts.gz?Authorization=3_20210407141045_87099f85d9bc40678d365664_8eb6eed6b3a8e9fc4f7af3f9e6bdcba5a6b23edd_002_20210408141045_0063_dnld",
+                "file": "rapid7sonarhosts"
+            }
+        ]
+    }
+]

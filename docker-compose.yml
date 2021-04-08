@@ -1,0 +1,14 @@
+# Generates a random root password for the DB
+# Creates a database 'tls-observatory'
+version: '3.2'
+
+services:
+
+  db:
+    image: mongo
+    restart: always
+    ports:
+      - "127.0.0.1:27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: CHANGEME
