@@ -305,16 +305,16 @@ func showProgress(stats *scanner.CertScanStats) error {
 			app.QueueUpdateDraw(func() {
 				formatSources(stats, sourceRootNode)
 				// domains/s
+				successes := atomic.LoadUint64(&stats.Successes)
+				errors := atomic.LoadUint64(&stats.Errors)
 				now := time.Now()
-				nDomains := atomic.LoadUint64(&stats.Successes) - lastCount
+				nDomains := successes - lastCount
 				rate := float64(nDomains) / now.Sub(lastTime).Seconds()
 				statsWindow.GetCell(0, 0).SetText(fmt.Sprintf("%.2f", rate))
 				lastTime = now
-				lastCount = nDomains
+				lastCount = successes
 				// successes/errors
-				successes := atomic.LoadUint64(&stats.Successes)
 				statsWindow.GetCell(1, 0).SetText(fmt.Sprintf("%v", successes))
-				errors := atomic.LoadUint64(&stats.Errors)
 				statsWindow.GetCell(2, 0).SetText(fmt.Sprintf("%v", errors))
 			})
 			time.Sleep(time.Second * 1)

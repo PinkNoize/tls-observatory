@@ -82,16 +82,16 @@ func DownloadAllDatasets() error {
 
 func downloadFile(filename, url string, bar *mpb.Bar, wg *sync.WaitGroup) {
 	defer wg.Done()
-	client := http.Client{}
+	client := http.Client{
+		CheckRedirect: func(*http.Request, []*http.Request) error {
+			return nil
+		},
+	}
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		log.Fatal(err)
 		return
 	}
-	req.Header.Set("User-Agent", "Wget/1.21.1")
-	req.Header.Set("Accept-Encoding", "identity")
-	req.Header.Set("Connection", "Keep-Alive")
-	req.Header.Set("Accept", "*/*")
 
 	resp, err := client.Do(req)
 	if err != nil {

@@ -2,7 +2,7 @@
 
 Update dataset URLs
 
-# Setting up the MYSQL database
+# Setting up the mongoDB database
 
 ## Start the mongoDB database using Docker
 1. Install Docker
@@ -13,14 +13,14 @@ Update dataset URLs
     $ cd tls-observatory
     $ sudo docker-compose up -d
     ```
-    This will setup a database that will listen on 127.0.0.1:3306
+    This will setup a database that will listen on 127.0.0.1:27017
 
     NOTE: If you want to stop the database but still keep the data, run `docker-compose stop`.
     
     `docker-compose down` will delete your database.
 
-4. Get the generated root password
-
+4. Connect to the server to test
+    
     ```
-    $ sudo docker-compose logs | grep "GENERATED ROOT PASSWORD"
+    $ mongo --username root
     ```

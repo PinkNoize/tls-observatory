@@ -16,10 +16,13 @@ const CREDS_FILE = "output/dbcreds.json"
 const CERT_DB = "tls-observatory"
 const CERTINFO_COL = "certInfo"
 
+const BUFFER_SIZE = 650
+
 type Database struct {
-	client   *mongo.Client
-	certDB   *mongo.Database
-	certInfo *mongo.Collection
+	client     *mongo.Client
+	certDB     *mongo.Database
+	certInfo   *mongo.Collection
+	certBuffer []interface{}
 }
 
 type databaseConfig struct {
@@ -137,16 +140,34 @@ func New(client *mongo.Client) Database {
 
 func (d *Database) Close() error {
 	ctx := context.Background()
+	d.FlushCertInfo()
 	return d.client.Disconnect(ctx)
 }
 
 // expects a line of json
+// Buffers the insert
 func (d *Database) AddCertInfo(line []byte) error {
 	var doc interface{}
 	err := bson.UnmarshalExtJSON(line, true, &doc)
 	if err != nil {
 		return err
 	}
-	_, err = d.certInfo.InsertOne(context.TODO(), doc)
+	if len(d.certBuffer) == BUFFER_SIZE {
+		d.FlushCertInfo()
+	}
+	d.certBuffer = append(d.certBuffer, doc)
+	return err
+}
+
+func (d *Database) FlushCertInfo() error {
+	var err error = nil
+	if len(d.certBuffer) > 0 {
+		_, err = d.certInfo.InsertMany(
+			context.TODO(),
+			d.certBuffer,
+			options.InsertMany().SetOrdered(false),
+		)
+		d.certBuffer = nil
+	}
 	return err
 }
