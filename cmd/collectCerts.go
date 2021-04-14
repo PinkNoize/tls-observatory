@@ -26,6 +26,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"strconv"
 	"sync/atomic"
 	"time"
 
@@ -190,11 +191,25 @@ func configureScan() (*scanner.CertScanConfig, error) {
 		}
 	})
 
+	var timeout string = "5"
+	form := tview.NewForm().AddInputField("Timeout (s)", "5", 0,
+		func(textToCheck string, lastChar rune) bool {
+			if _, err := strconv.Atoi(textToCheck); err != nil {
+				return false
+			}
+			return true
+		},
+		func(text string) {
+			timeout = text
+		},
+	)
+
 	button := tview.NewButton("Click to start scan or press ESC").
 		SetSelectedFunc(func() { app.Stop() })
 	layout := tview.NewFlex().
 		SetDirection(tview.FlexRow).
 		AddItem(tree, 0, 1, true).
+		AddItem(form, 0, 1, false).
 		AddItem(button, 1, 1, false)
 	layout.SetBorder(true).
 		SetTitle("Enable/Disable data sources").
@@ -205,6 +220,7 @@ func configureScan() (*scanner.CertScanConfig, error) {
 
 	return &scanner.CertScanConfig{
 		Sources: sources,
+		Timeout: timeout,
 	}, nil
 }
 

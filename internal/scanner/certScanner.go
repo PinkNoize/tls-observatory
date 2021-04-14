@@ -21,6 +21,7 @@ import (
 
 type CertScanConfig struct {
 	Sources []dataset.DataSource
+	Timeout string
 }
 
 type FileInfo struct {
@@ -50,7 +51,6 @@ type CertScanner struct {
 	stdout     io.ReadCloser
 	stderr     io.ReadCloser
 	logPipe    *os.File
-	metaPipe   *os.File
 	userLogger *log.Logger
 	cfg        *CertScanConfig
 	stats      *CertScanStats
@@ -68,13 +68,8 @@ func New(db *database.Database, cfg *CertScanConfig) (*CertScanner, error) {
 	if err != nil {
 		return nil, err
 	}
-	metaFilePath := filepath.Join(dir, "zgrabMetadata")
-	err = syscall.Mkfifo(metaFilePath, 0770)
-	if err != nil {
-		return nil, err
-	}
 	// Create zmap2 instance
-	cmd := exec.Command("zgrab2", "tls", "--log-file", logFilePath, "--metadata-file", metaFilePath)
+	cmd := exec.Command("zgrab2", "tls", "--log-file", logFilePath, "--timeout", cfg.Timeout)
 	stdin, err := cmd.StdinPipe()
 	if err != nil {
 		return nil, err
@@ -98,7 +93,6 @@ func New(db *database.Database, cfg *CertScanConfig) (*CertScanner, error) {
 		stdout:     stdout,
 		stderr:     stderr,
 		logPipe:    nil,
-		metaPipe:   nil,
 		userLogger: nil,
 		cfg:        cfg,
 		stats:      &stats,
@@ -115,9 +109,6 @@ func (scanner *CertScanner) Close() error {
 	if scanner.logPipe != nil {
 		scanner.logPipe.Close()
 	}
-	if scanner.metaPipe != nil {
-		scanner.logPipe.Close()
-	}
 	os.RemoveAll(scanner.tempDir)
 
 	return err
@@ -129,12 +120,7 @@ func (scanner *CertScanner) Start() (*CertScanStats, error) {
 		return nil, err
 	}
 	logFilePath := filepath.Join(scanner.tempDir, "zgrabLog")
-	metaFilePath := filepath.Join(scanner.tempDir, "zgrabMetadata")
 	scanner.logPipe, err = os.OpenFile(logFilePath, os.O_RDONLY, os.ModeNamedPipe)
-	if err != nil {
-		return nil, err
-	}
-	scanner.metaPipe, err = os.OpenFile(metaFilePath, os.O_RDONLY, os.ModeNamedPipe)
 	if err != nil {
 		return nil, err
 	}
