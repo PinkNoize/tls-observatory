@@ -314,6 +314,11 @@ mainLoop:
 			break mainLoop
 		}
 	}
+	scanner.userLogger.Println("Flushing scan info")
+	err := scanner.db.FlushCertInfo()
+	if err != nil {
+		scanner.userLogger.Println(err)
+	}
 
 }
 

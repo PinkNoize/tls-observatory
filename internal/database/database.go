@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"time"
 
+	"github.com/pkg/errors"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -15,7 +16,7 @@ import (
 
 const CREDS_FILE = "output/dbcreds.json"
 const CERT_DB = "tls-observatory"
-const CERTINFO_COL = "certInfo"
+const SCANINFO_COL = "scanInfo"
 const ALLCERT_COL = "allCerts"
 
 const BUFFER_SIZE = 650
@@ -23,7 +24,7 @@ const BUFFER_SIZE = 650
 type Database struct {
 	client       *mongo.Client
 	certDB       *mongo.Database
-	certInfo     *mongo.Collection
+	scanInfo     *mongo.Collection
 	allCerts     *mongo.Collection
 	resultBuffer []bson.M
 }
@@ -152,19 +153,50 @@ func OpenDatabase() (*Database, error) {
 func New(client *mongo.Client) (Database, error) {
 	db := client.Database(CERT_DB)
 	allCerts := db.Collection(ALLCERT_COL)
-	preventDups := mongo.IndexModel{
+	scanInfo := db.Collection(SCANINFO_COL)
+	preventDupsCerts := mongo.IndexModel{
 		Keys: bson.M{
 			"raw": 1,
 		}, Options: options.Index().SetUnique(true),
 	}
-	_, err := allCerts.Indexes().CreateOne(context.TODO(), preventDups)
+	_, err := allCerts.Indexes().CreateOne(context.TODO(), preventDupsCerts)
+	if err != nil {
+		return Database{}, err
+	}
+	preventDupsIP := mongo.IndexModel{
+		Keys: bson.M{
+			"ip": 1,
+		}, Options: options.Index().
+			SetUnique(true).
+			SetPartialFilterExpression(bson.M{
+				"ip": bson.M{
+					"$exists": true,
+				},
+			}),
+	}
+	_, err = scanInfo.Indexes().CreateOne(context.TODO(), preventDupsIP)
+	if err != nil {
+		return Database{}, err
+	}
+	preventDupsDomain := mongo.IndexModel{
+		Keys: bson.M{
+			"domain": 1,
+		}, Options: options.Index().
+			SetUnique(true).
+			SetPartialFilterExpression(bson.M{
+				"domain": bson.M{
+					"$exists": true,
+				},
+			}),
+	}
+	_, err = scanInfo.Indexes().CreateOne(context.TODO(), preventDupsDomain)
 	if err != nil {
 		return Database{}, err
 	}
 	return Database{
 		client:   client,
 		certDB:   db,
-		certInfo: db.Collection(CERTINFO_COL),
+		scanInfo: scanInfo,
 		allCerts: allCerts,
 	}, nil
 }
@@ -199,7 +231,7 @@ func (d *Database) insertCert(cert interface{}) (interface{}, error) {
 			find_result := d.allCerts.FindOne(
 				context.TODO(),
 				bson.M{
-					"raw": cert.(map[string]interface{})["raw"],
+					"raw": cert.(primitive.M)["raw"],
 				},
 				options.FindOne().SetProjection(bson.M{"_id": 1}),
 			)
@@ -224,25 +256,27 @@ func (d *Database) FlushCertInfo() error {
 		entry := d.resultBuffer[i]
 		// Check if key data exists
 		if data_i, ok := entry["data"]; ok {
-			if data, ok := data_i.(map[string]interface{}); ok {
+			if data, ok := data_i.(primitive.M); ok {
 				// Check if TLS exists
 				if tls_i, ok := data["tls"]; ok {
-					if tls, ok := tls_i.(map[string]interface{}); ok {
+					if tls, ok := tls_i.(primitive.M); ok {
 						// Check is result exists
 						if res_i, ok := tls["result"]; ok {
-							if res, ok := res_i.(map[string]interface{}); ok {
+							if res, ok := res_i.(primitive.M); ok {
 								// Check is handshake_log exists
 								if hd_i, ok := res["handshake_log"]; ok {
-									if hd, ok := hd_i.(map[string]interface{}); ok {
+									if hd, ok := hd_i.(primitive.M); ok {
 										// Check is server_certificates exists
 										if sc_i, ok := hd["server_certificates"]; ok {
-											if sc, ok := sc_i.(map[string]interface{}); ok {
+											if sc, ok := sc_i.(primitive.M); ok {
 												if siteCert, ok := sc["certificate"]; ok {
 													id, err := d.insertCert(siteCert)
 													if err != nil {
 														return err
 													}
 													sc["certificate"] = id
+												} else {
+													return errors.Errorf("certificate not present: %v", sc)
 												}
 												if chain_i, ok := sc["chain"]; ok {
 													if chain, ok := chain_i.(primitive.A); ok {
@@ -257,24 +291,45 @@ func (d *Database) FlushCertInfo() error {
 														sc["chain"] = ids
 													}
 												}
+											} else {
+												return errors.Errorf("server_certificates not a map: %v", sc_i)
 											}
+										} else {
+											return errors.Errorf("server_certificates not in: %v", hd)
 										}
+									} else {
+										return errors.Errorf("handshake_log not a map: %v", hd_i)
 									}
+								} else {
+									return errors.Errorf("handshake_log not in: %v", res)
 								}
+							} else {
+								return errors.Errorf("result not a map: %v", res_i)
 							}
+						} else {
+							return errors.Errorf("result not in: %v", tls)
 						}
+					} else {
+						return errors.Errorf("tls not a map: %v", tls_i)
 					}
+				} else {
+					return errors.Errorf("tls not in: %v", data)
 				}
+			} else {
+				return errors.Errorf("data not a map: %T", data_i)
 			}
+		} else {
+			return errors.Errorf("data not in: %v", entry)
 		}
 	}
+
 	// I don't know how to convert to interface so recreate the list
 	var docs []interface{}
 	for i := range d.resultBuffer {
 		docs = append(docs, d.resultBuffer[i])
 	}
 	if len(d.resultBuffer) > 0 {
-		_, err = d.certInfo.InsertMany(
+		_, err = d.scanInfo.InsertMany(
 			context.TODO(),
 			docs,
 			options.InsertMany().SetOrdered(false),
