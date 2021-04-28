@@ -268,43 +268,28 @@ func (scanner *CertScanner) processSource(source *SourceInfo) {
 }
 
 func (scanner *CertScanner) processResultLine(line []byte) {
-	var jsonData map[string]interface{}
-	err := json.Unmarshal(line, &jsonData)
+	var response database.ZGrabResponse
+	err := json.Unmarshal(line, &response)
 	if err != nil {
 		scanner.userLogger.Println(err)
 		return
 	}
-	if data, ok := jsonData["data"]; ok {
-		switch tls := data.(type) {
-		case map[string]interface{}:
-			if tls, ok := tls["tls"]; ok {
-				switch status := tls.(type) {
-				case map[string]interface{}:
-					if status["status"] == "success" {
-						// Store data in DB
-						err = scanner.db.AddCertInfo(line)
-						atomic.AddUint64(&scanner.stats.Successes, 1)
-						if err != nil {
-							scanner.userLogger.Println(err)
-							return
-						}
-					} else if jsonError, ok := status["error"]; ok {
-						scanner.userLogger.Println(jsonError)
-						atomic.AddUint64(&scanner.stats.Errors, 1)
-						return
-					} else {
-						scanner.userLogger.Printf("Failed to parse error: %s\n", line)
-						return
-					}
-				default:
-					scanner.userLogger.Printf("tls not a dict: %s\n", line)
-					return
-				}
+	if response.Data != nil && response.Data.TLS != nil {
+		if response.Data.TLS.Status == "success" {
+			// Store data in DB
+			err = scanner.db.AddCertInfo(line)
+			atomic.AddUint64(&scanner.stats.Successes, 1)
+			if err != nil {
+				scanner.userLogger.Println(err)
+				return
 			}
-		default:
-			scanner.userLogger.Printf("data not a dict: %s\n", line)
+		} else {
+			scanner.userLogger.Println(response.Data.TLS.Error)
+			atomic.AddUint64(&scanner.stats.Errors, 1)
 			return
 		}
+	} else {
+		scanner.userLogger.Println("Data not in result")
 	}
 }
 
