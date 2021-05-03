@@ -68,17 +68,17 @@ func New(db *database.Database, cfg *CertScanConfig) (*CertScanner, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	// Create zmap2 instance
-	cmd := exec.Command("zgrab2", "tls", "--log-file", logFilePath, "--timeout", cfg.Timeout)
+	cmd := exec.Command("zgrab2", "tls",
+		"--log-file", logFilePath,
+		"--timeout", cfg.Timeout,
+	)
 	stdin, err := cmd.StdinPipe()
 	if err != nil {
 		return nil, err
 	}
 	stdout, err := cmd.StdoutPipe()
-	if err != nil {
-		return nil, err
-	}
-	stderr, err := cmd.StderrPipe()
 	if err != nil {
 		return nil, err
 	}
@@ -91,7 +91,7 @@ func New(db *database.Database, cfg *CertScanConfig) (*CertScanner, error) {
 		cmd:        cmd,
 		stdin:      stdin,
 		stdout:     stdout,
-		stderr:     stderr,
+		stderr:     nil,
 		logPipe:    nil,
 		userLogger: nil,
 		cfg:        cfg,
@@ -115,7 +115,20 @@ func (scanner *CertScanner) Close() error {
 }
 
 func (scanner *CertScanner) Start() (*CertScanStats, error) {
-	err := scanner.cmd.Start()
+	// Increase file limit for zgrab
+	var rLimit syscall.Rlimit
+	err := syscall.Getrlimit(syscall.RLIMIT_NOFILE, &rLimit)
+	if err != nil {
+		return nil, err
+	}
+	if rLimit.Max < 12289 {
+		rLimit.Cur = 12289
+		err = syscall.Setrlimit(syscall.RLIMIT_NOFILE, &rLimit)
+		if err != nil {
+			return nil, err
+		}
+	}
+	err = scanner.cmd.Start()
 	if err != nil {
 		return nil, err
 	}

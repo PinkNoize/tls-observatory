@@ -24,8 +24,8 @@ const BUFFER_SIZE = 650
 type Database struct {
 	client       *mongo.Client
 	certDB       *mongo.Database
-	scanInfo     *mongo.Collection
-	allCerts     *mongo.Collection
+	ScanInfo     *mongo.Collection
+	AllCerts     *mongo.Collection
 	resultBuffer []bson.M
 }
 
@@ -37,20 +37,23 @@ type databaseConfig struct {
 }
 
 type ZGrabResponse struct {
-	Data *struct {
+	ID     *interface{} `json:"_id" bson:"_id"`
+	Domain *string      `json:"domain" bson:"domain"`
+	IP     *string      `json:"ip" bson:"ip"`
+	Data   *struct {
 		TLS *struct {
-			Status string `json:"status"`
-			Error  string `json:"error"`
+			Status string `json:"status" bson:"status"`
+			Error  string `json:"error" bson:"error"`
 			Result *struct {
 				HandshakeLog *struct {
 					ServerCertificates *struct {
-						Certificate *json.RawMessage   `json:"certificate"`
-						Chain       *[]json.RawMessage `json:"chain"`
-					} `json:"server_certificates"`
-				} `json:"handshake_log"`
-			} `json:"result"`
-		} `json:"tls"`
-	} `json:"data"`
+						Certificate *interface{}   `json:"certificate" bson:"certificate"`
+						Chain       *[]interface{} `json:"chain" bson:"chain"`
+					} `json:"server_certificates" bson:"server_certificates"`
+				} `json:"handshake_log" bson:"handshake_log"`
+			} `json:"result" bson:"result"`
+		} `json:"tls" bson:"tls"`
+	} `json:"data" bson:"data"`
 }
 
 func CreateDatabase(user, pass, host string) (*Database, error) {
@@ -196,8 +199,8 @@ func New(client *mongo.Client) (Database, error) {
 	return Database{
 		client:   client,
 		certDB:   db,
-		scanInfo: scanInfo,
-		allCerts: allCerts,
+		ScanInfo: scanInfo,
+		AllCerts: allCerts,
 	}, nil
 }
 
@@ -222,13 +225,13 @@ func (d *Database) AddCertInfo(line []byte) error {
 
 func (d *Database) insertCert(cert interface{}) (interface{}, error) {
 	var id interface{}
-	insert_res, err := d.allCerts.InsertOne(
+	insert_res, err := d.AllCerts.InsertOne(
 		context.TODO(),
 		cert,
 	)
 	if err != nil {
 		if mongo.IsDuplicateKeyError(err) {
-			find_result := d.allCerts.FindOne(
+			find_result := d.AllCerts.FindOne(
 				context.TODO(),
 				bson.M{
 					"raw": cert.(primitive.M)["raw"],
@@ -329,12 +332,69 @@ func (d *Database) FlushCertInfo() error {
 		docs = append(docs, d.resultBuffer[i])
 	}
 	if len(d.resultBuffer) > 0 {
-		_, err = d.scanInfo.InsertMany(
+		_, err = d.ScanInfo.InsertMany(
 			context.TODO(),
 			docs,
 			options.InsertMany().SetOrdered(false),
 		)
 		d.resultBuffer = nil
 	}
+	return err
+}
+
+func (d *Database) GetUnvalidatedCerts() (*mongo.Cursor, error) {
+	query := bson.M{
+		"valid": bson.M{
+			"$exists": false,
+		},
+	}
+	return d.ScanInfo.Find(context.TODO(), query)
+}
+
+func (d *Database) GetCertByID(id primitive.ObjectID) (bson.M, error) {
+	res := d.AllCerts.FindOne(context.TODO(), bson.M{
+		"_id": id,
+	})
+	var cert bson.M
+	err := res.Decode(&cert)
+	return cert, err
+}
+
+func (d *Database) SetScanValidation(id primitive.ObjectID, isValid bool) error {
+	updates := bson.M{
+		"$set": bson.M{
+			"valid": isValid,
+		},
+	}
+	_, err := d.ScanInfo.UpdateByID(context.TODO(),
+		id,
+		updates,
+	)
+	return err
+}
+
+func (d *Database) SetCertValidation(id primitive.ObjectID, validRoots map[string]struct{}) error {
+	isValid := false
+	if len(validRoots) > 0 {
+		isValid = true
+	}
+	var validRootsNames bson.A = bson.A{}
+	for name := range validRoots {
+		validRootsNames = append(validRootsNames, name)
+	}
+	updates := bson.M{
+		"$set": bson.M{
+			"valid": isValid,
+		},
+		"$addToSet": bson.M{
+			"validRoots": bson.M{
+				"$each": validRootsNames,
+			},
+		},
+	}
+	_, err := d.AllCerts.UpdateByID(context.TODO(),
+		id,
+		updates,
+	)
 	return err
 }

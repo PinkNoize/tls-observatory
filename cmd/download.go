@@ -34,6 +34,9 @@ var downloadCmd = &cobra.Command{
 	Short: "Downloads domain sources",
 	Long:  `Downloads datasets in ./datasets.json`,
 	Run: func(cmd *cobra.Command, args []string) {
+		if err := dataset.GetRootCerts(); err != nil {
+			panic(err)
+		}
 		if err := dataset.DownloadAllDatasets(); err != nil {
 			panic(err)
 		}

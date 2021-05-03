@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"strconv"
 	"sync"
@@ -16,6 +17,7 @@ import (
 )
 
 var DATASETS_PATH = "./output/datasets"
+var ROOTCAS_PATH = "./output/rootCAs"
 
 type Datasets []struct {
 	Name  string `json:"name"`
@@ -44,6 +46,35 @@ func getDatasets() (Datasets, error) {
 		return nil, err
 	}
 	return datasets, nil
+}
+
+func GetRootCerts() error {
+	var wg sync.WaitGroup
+	p := mpb.New(mpb.WithWaitGroup(&wg))
+	tarUrl := "https://nabla-c0d3.github.io/trust_stores_observatory/trust_stores_as_pem.tar.gz"
+	if err := os.MkdirAll(ROOTCAS_PATH, 0775); err != nil {
+		return err
+	}
+	bar := p.AddBar(0,
+		mpb.PrependDecorators(
+			decor.Name("rootCAs.tar.gz", decor.WCSyncSpace),
+			decor.CountersKiloByte(" % .2f / % .2f ", decor.WCSyncSpace),
+			decor.Percentage(decor.WCSyncSpace),
+		),
+		mpb.AppendDecorators(
+			decor.EwmaSpeed(decor.UnitKB, "% .2f", 60),
+		),
+	)
+	fileLoc := "./output/rootCAs/rootCAs.tar.gz"
+	wg.Add(1)
+	go downloadFile(fileLoc, tarUrl, bar, &wg)
+	wg.Wait()
+	cmd := exec.Command("tar", "xzvf", fileLoc, "-C", ROOTCAS_PATH)
+	err := cmd.Run()
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func DownloadAllDatasets() error {
@@ -164,8 +195,4 @@ func (source *DataSource) Disable() {
 
 func (source *DataSource) Enable() {
 	source.Enabled = true
-}
-
-func (source *DataSource) ProcessWrite(stdin io.WriteCloser) {
-
 }
