@@ -23,15 +23,15 @@ package cmd
 
 import (
 	"context"
-	"crypto/sha256"
 	"crypto/x509"
 	"encoding/base64"
-	"encoding/hex"
+	"encoding/json"
 	"encoding/pem"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
+	"os/signal"
 	"path/filepath"
 	"strings"
 
@@ -39,6 +39,10 @@ import (
 	"github.com/PinkNoize/tls-observatory/internal/dataset"
 	"github.com/PinkNoize/tls-observatory/internal/util"
 	"github.com/spf13/cobra"
+	"github.com/vbauerster/mpb/v6"
+	"github.com/vbauerster/mpb/v6/decor"
+	ztls "github.com/zmap/zcrypto/tls"
+	zx509 "github.com/zmap/zcrypto/x509"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
@@ -85,7 +89,11 @@ func getRootCAs(db *database.Database) (map[string]*x509.CertPool, error) {
 			if err != nil {
 				return err
 			}
-			var rootCerts []*x509.Certificate
+			pool := x509.NewCertPool()
+			pool.AppendCertsFromPEM(rawPem)
+			rootCAs[rootName] = pool
+
+			var rootCerts []*zx509.Certificate
 			// Read all the pem certs
 			for {
 				block, rest := pem.Decode(rawPem)
@@ -93,7 +101,7 @@ func getRootCAs(db *database.Database) (map[string]*x509.CertPool, error) {
 					break
 				}
 				if block.Type == "CERTIFICATE" {
-					cert, err := x509.ParseCertificate(block.Bytes)
+					cert, err := zx509.ParseCertificate(block.Bytes)
 					if err != nil {
 						log.Println(err)
 						rawPem = rest
@@ -105,15 +113,32 @@ func getRootCAs(db *database.Database) (map[string]*x509.CertPool, error) {
 				}
 				rawPem = rest
 			}
-			pool := x509.NewCertPool()
 			for _, cert := range rootCerts {
-				pool.AddCert(cert)
-				hash := sha256.Sum256(cert.Raw)
-				digest := hex.EncodeToString(hash[:])
-				_, err := db.AllCerts.UpdateOne(context.TODO(),
-					bson.M{
-						"parsed.fingerprint_sha256": digest,
-					},
+				formattedCert := ztls.SimpleCertificate{
+					Raw:    cert.Raw,
+					Parsed: cert,
+				}
+				jsonFormat, err := json.Marshal(formattedCert)
+				if err != nil {
+					log.Printf("Failed to marshal json: %v", err)
+					continue
+				}
+				var certInfo bson.M
+				err = bson.UnmarshalExtJSON(jsonFormat, true, &certInfo)
+				if err != nil {
+					log.Printf("Failed to unmarshal bson: %v", err)
+					continue
+				}
+				certInfo["isRootCA"] = true
+				certInfo["validRoots"] = bson.A{rootName}
+				id, err := db.InsertCert(certInfo, true)
+				if err != nil {
+					log.Printf("Failed to insert cert: %v", err)
+					continue
+				}
+
+				_, err = db.AllCerts.UpdateByID(context.TODO(),
+					id,
 					bson.M{
 						"$set": bson.M{
 							"isRootCA": true,
@@ -127,7 +152,6 @@ func getRootCAs(db *database.Database) (map[string]*x509.CertPool, error) {
 					log.Println(err)
 				}
 			}
-			rootCAs[rootName] = pool
 		}
 		return nil
 	})
@@ -139,6 +163,7 @@ func validateCertChains() error {
 	if err != nil {
 		return err
 	}
+	fmt.Println("Inserting Root CAs...")
 	rootCAs, err := getRootCAs(db)
 	if err != nil {
 		return err
@@ -148,7 +173,33 @@ func validateCertChains() error {
 		return err
 	}
 
+	// Setup Ctrl-C handler
+	signalChan := make(chan os.Signal, 1)
+	stopLooping := make(chan struct{})
+	signal.Notify(signalChan, os.Interrupt)
+	go func() {
+		<-signalChan
+		fmt.Printf("Stopping...\n\n\n")
+		stopLooping <- struct{}{}
+		signal.Stop(signalChan)
+	}()
+
+	// Setup progress bar
+	p := mpb.New()
+	bar := p.AddBar(0,
+		mpb.PrependDecorators(decor.Counters(0, "%v iter [%v]")),
+	)
+
+mainLoop:
 	for cur.Next(context.TODO()) {
+		bar.IncrBy(1)
+		// Check if we should stop
+		select {
+		case <-stopLooping:
+			break mainLoop
+		default:
+		}
+
 		var name string
 		var doc database.ZGrabResponse
 		err = cur.Decode(&doc)
@@ -212,6 +263,8 @@ func validateCertChains() error {
 			log.Println(err)
 		}
 	}
+	bar.SetTotal(0, true)
+	p.Wait()
 
 	return nil
 }
@@ -295,7 +348,8 @@ func validateCertsFromIDs(db *database.Database, rootCAs map[string]*x509.CertPo
 			KeyUsages:     []x509.ExtKeyUsage{x509.ExtKeyUsageAny},
 		})
 		if err != nil {
-			return err
+			log.Println(err)
+			continue
 		}
 		if len(validChains) > 0 {
 			siteIsValid = true

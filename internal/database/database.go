@@ -223,14 +223,14 @@ func (d *Database) AddCertInfo(line []byte) error {
 	return err
 }
 
-func (d *Database) insertCert(cert interface{}) (interface{}, error) {
+func (d *Database) InsertCert(cert interface{}, getID bool) (interface{}, error) {
 	var id interface{}
 	insert_res, err := d.AllCerts.InsertOne(
 		context.TODO(),
 		cert,
 	)
 	if err != nil {
-		if mongo.IsDuplicateKeyError(err) {
+		if getID && mongo.IsDuplicateKeyError(err) {
 			find_result := d.AllCerts.FindOne(
 				context.TODO(),
 				bson.M{
@@ -273,7 +273,7 @@ func (d *Database) FlushCertInfo() error {
 										if sc_i, ok := hd["server_certificates"]; ok {
 											if sc, ok := sc_i.(primitive.M); ok {
 												if siteCert, ok := sc["certificate"]; ok {
-													id, err := d.insertCert(siteCert)
+													id, err := d.InsertCert(siteCert, true)
 													if err != nil {
 														return err
 													}
@@ -285,7 +285,7 @@ func (d *Database) FlushCertInfo() error {
 													if chain, ok := chain_i.(primitive.A); ok {
 														var ids []interface{}
 														for l := range chain {
-															id, err := d.insertCert(chain[l])
+															id, err := d.InsertCert(chain[l], true)
 															if err != nil {
 																return err
 															}

@@ -12,6 +12,7 @@ require (
 	github.com/spf13/cobra v1.1.3
 	github.com/ulikunitz/xz v0.5.10
 	github.com/vbauerster/mpb/v6 v6.0.3
+	github.com/zmap/zcrypto v0.0.0-20210430144035-831a5b52a202
 	go.mongodb.org/mongo-driver v1.5.1
 	golang.org/x/tools v0.0.0-20191112195655-aa38f8e97acc
 )
