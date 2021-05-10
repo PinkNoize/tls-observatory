@@ -166,6 +166,19 @@ func New(client *mongo.Client) (Database, error) {
 	if err != nil {
 		return Database{}, err
 	}
+	rootCAIndex := mongo.IndexModel{
+		Keys: bson.M{
+			"isRootCA": 1,
+		},
+		Options: options.Index().
+			SetPartialFilterExpression(bson.M{
+				"isRootCA": true,
+			}),
+	}
+	_, err = allCerts.Indexes().CreateOne(context.TODO(), rootCAIndex)
+	if err != nil {
+		return Database{}, err
+	}
 	preventDupsIP := mongo.IndexModel{
 		Keys: bson.M{
 			"ip": 1,
@@ -382,19 +395,33 @@ func (d *Database) SetCertValidation(id primitive.ObjectID, validRoots map[strin
 	for name := range validRoots {
 		validRootsNames = append(validRootsNames, name)
 	}
-	updates := bson.M{
+	updates := bson.A{bson.M{
 		"$set": bson.M{
-			"valid": isValid,
+			"valid": bson.M{
+				"$or": bson.A{
+					isValid, "$valid",
+				},
+			},
 		},
+	}}
+
+	_, err := d.AllCerts.UpdateByID(context.TODO(),
+		id,
+		updates,
+	)
+	if err != nil {
+		return err
+	}
+	updates2 := bson.M{
 		"$addToSet": bson.M{
 			"validRoots": bson.M{
 				"$each": validRootsNames,
 			},
 		},
 	}
-	_, err := d.AllCerts.UpdateByID(context.TODO(),
+	_, err = d.AllCerts.UpdateByID(context.TODO(),
 		id,
-		updates,
+		updates2,
 	)
 	return err
 }

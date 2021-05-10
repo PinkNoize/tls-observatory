@@ -130,6 +130,7 @@ func getRootCAs(db *database.Database) (map[string]*x509.CertPool, error) {
 					continue
 				}
 				certInfo["isRootCA"] = true
+				certInfo["valid"] = true
 				certInfo["validRoots"] = bson.A{rootName}
 				id, err := db.InsertCert(certInfo, true)
 				if err != nil {
@@ -142,6 +143,7 @@ func getRootCAs(db *database.Database) (map[string]*x509.CertPool, error) {
 					bson.M{
 						"$set": bson.M{
 							"isRootCA": true,
+							"valid":    true,
 						},
 						"$addToSet": bson.M{
 							"validRoots": rootName,
