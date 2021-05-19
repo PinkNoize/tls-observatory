@@ -179,6 +179,20 @@ func New(client *mongo.Client) (Database, error) {
 	if err != nil {
 		return Database{}, err
 	}
+	isCAIndex := mongo.IndexModel{
+		Keys: bson.M{
+			"parsed.extensions.basic_constraints.is_ca": 1,
+		},
+		Options: options.Index().
+			SetPartialFilterExpression(bson.M{
+				"parsed.extensions.basic_constraints.is_ca": true,
+			}),
+	}
+	_, err = allCerts.Indexes().CreateOne(context.TODO(), isCAIndex)
+	if err != nil {
+		return Database{}, err
+	}
+
 	preventDupsIP := mongo.IndexModel{
 		Keys: bson.M{
 			"ip": 1,
