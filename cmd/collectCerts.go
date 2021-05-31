@@ -25,6 +25,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"os"
 	"strconv"
 	"sync/atomic"
 	"time"
@@ -163,6 +164,8 @@ func configureScan() (*scanner.CertScanConfig, error) {
 }
 
 func formatSources(stats *scanner.CertScanStats, root *tview.TreeNode) {
+	progressFile, _ := os.Create("output/progress")
+	defer progressFile.Close()
 	children := root.GetChildren()
 	for _, source := range children {
 		for _, node := range source.GetChildren() {
@@ -171,13 +174,15 @@ func formatSources(stats *scanner.CertScanStats, root *tview.TreeNode) {
 			case *scanner.FileInfo:
 				progress := atomic.LoadInt64(&s.Progress)
 				total := atomic.LoadInt64(&s.Total)
-				node.SetText(fmt.Sprintf(
+				text := fmt.Sprintf(
 					"%s [ %d / %d B] %.2f %%",
 					s.Name,
 					progress,
 					total,
 					(float32(progress)/float32(total))*100,
-				))
+				)
+				progressFile.WriteString(text + "\n")
+				node.SetText(text)
 			}
 		}
 	}

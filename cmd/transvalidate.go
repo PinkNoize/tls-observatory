@@ -24,33 +24,27 @@ package cmd
 import (
 	"context"
 	"crypto/x509"
-	"encoding/base64"
-	"encoding/json"
-	"encoding/pem"
+	"encoding/hex"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"os/signal"
-	"path/filepath"
 	"strings"
 	"time"
 
 	"github.com/PinkNoize/tls-observatory/internal/database"
-	"github.com/PinkNoize/tls-observatory/internal/dataset"
 	"github.com/PinkNoize/tls-observatory/internal/util"
 	"github.com/spf13/cobra"
 	"github.com/vbauerster/mpb/v6"
 	"github.com/vbauerster/mpb/v6/decor"
-	ztls "github.com/zmap/zcrypto/tls"
-	zx509 "github.com/zmap/zcrypto/x509"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-// validateCmd represents the validate command
-var validateCmd = &cobra.Command{
-	Use:   "validate",
+// transvalidateCmd represents the transvalidate command
+var transvalidateCmd = &cobra.Command{
+	Use:   "transvalidate",
 	Short: "A brief description of your command",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
@@ -59,7 +53,7 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		err := validateCertChains()
+		err := findTransvalidCerts()
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -67,101 +61,20 @@ to quickly create a Cobra application.`,
 }
 
 func init() {
-	rootCmd.AddCommand(validateCmd)
+	rootCmd.AddCommand(transvalidateCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// validateCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// transvalidateCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// validateCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// transvalidateCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
-func getRootCAs(db *database.Database) (map[string]*x509.CertPool, error) {
-	rootCAs := make(map[string]*x509.CertPool)
-	err := filepath.Walk(dataset.ROOTCAS_PATH, func(path string, info os.FileInfo, err error) error {
-		filename := info.Name()
-		if match, _ := filepath.Match("*.pem", filename); match {
-			rootName := strings.TrimSuffix(filename, filepath.Ext(filename))
-			rawPem, err := ioutil.ReadFile(path)
-			if err != nil {
-				return err
-			}
-			pool := x509.NewCertPool()
-			pool.AppendCertsFromPEM(rawPem)
-			rootCAs[rootName] = pool
-
-			var rootCerts []*zx509.Certificate
-			// Read all the pem certs
-			for {
-				block, rest := pem.Decode(rawPem)
-				if block == nil {
-					break
-				}
-				if block.Type == "CERTIFICATE" {
-					cert, err := zx509.ParseCertificate(block.Bytes)
-					if err != nil {
-						log.Println(err)
-						rawPem = rest
-						continue
-					}
-					rootCerts = append(rootCerts, cert)
-				} else {
-					log.Printf("PEM data not a certificate: %v", block.Type)
-				}
-				rawPem = rest
-			}
-			for _, cert := range rootCerts {
-				formattedCert := ztls.SimpleCertificate{
-					Raw:    cert.Raw,
-					Parsed: cert,
-				}
-				jsonFormat, err := json.Marshal(formattedCert)
-				if err != nil {
-					log.Printf("Failed to marshal json: %v", err)
-					continue
-				}
-				var certInfo bson.M
-				err = bson.UnmarshalExtJSON(jsonFormat, true, &certInfo)
-				if err != nil {
-					log.Printf("Failed to unmarshal bson: %v", err)
-					continue
-				}
-				certInfo["isRootCA"] = true
-				certInfo["valid"] = true
-				certInfo["validRoots"] = bson.A{rootName}
-				id, err := db.InsertCert(certInfo, true)
-				if err != nil {
-					log.Printf("Failed to insert cert: %v", err)
-					continue
-				}
-
-				_, err = db.AllCerts.UpdateByID(context.TODO(),
-					id,
-					bson.M{
-						"$set": bson.M{
-							"isRootCA": true,
-							"valid":    true,
-						},
-						"$addToSet": bson.M{
-							"validRoots": rootName,
-						},
-					},
-				)
-				if err != nil {
-					log.Println(err)
-				}
-			}
-		}
-		return nil
-	})
-	return rootCAs, err
-}
-
-func validateCertChains() error {
+func findTransvalidCerts() error {
 	db, err := util.PromptDB()
 	if err != nil {
 		return err
@@ -171,7 +84,8 @@ func validateCertChains() error {
 	if err != nil {
 		return err
 	}
-	cur, err := db.GetUnvalidatedCerts()
+
+	cur, err := db.GetUntransvalidatedCerts()
 	if err != nil {
 		return err
 	}
@@ -266,7 +180,7 @@ mainLoop:
 			log.Println(err)
 			continue
 		}
-		err = validateCertsFromIDs(db, rootCAs, name, t, id, siteCert, chain)
+		err = checkTransValidCertFromIDs(db, rootCAs, name, t, id, siteCert, chain)
 		if err != nil {
 			log.Println(err)
 		}
@@ -277,17 +191,9 @@ mainLoop:
 	return nil
 }
 
-func parseCertB64(b64Cert string) (*x509.Certificate, error) {
-	b64decoder := base64.StdEncoding
-	rawDERCert, err := b64decoder.DecodeString(b64Cert)
-	if err != nil {
-		return nil, err
-	}
-	return x509.ParseCertificate(rawDERCert)
-}
-
-func validateCertsFromIDs(db *database.Database, rootCAs map[string]*x509.CertPool, name string, t time.Time, id, siteCert primitive.ObjectID, chain []primitive.ObjectID) error {
-	siteIsValid := false
+func checkTransValidCertFromIDs(db *database.Database, rootCAs map[string]*x509.CertPool, name string, t time.Time, id, siteCert primitive.ObjectID, chain []primitive.ObjectID) error {
+	// This code is that same as in validate with intermediate cert searching
+	siteIsTransValid := false
 	siteCertInfo, err := db.GetCertByID(siteCert)
 	if err != nil {
 		return err
@@ -311,7 +217,6 @@ func validateCertsFromIDs(db *database.Database, rootCAs map[string]*x509.CertPo
 		validCAs map[string]struct{}
 		isRootCA bool
 	}
-
 	var allCertsArray []pair
 	// Add the site cert
 	allCertsArray = append(allCertsArray,
@@ -348,6 +253,52 @@ func validateCertsFromIDs(db *database.Database, rootCAs map[string]*x509.CertPo
 			},
 		)
 	}
+
+	// Look for candidate intermediate certificates
+	strAKID := strings.ToLower(hex.EncodeToString(realSiteCert.AuthorityKeyId))
+	var certAKID interface{} = strAKID
+	if len(strAKID) == 0 {
+		certAKID = nil
+	}
+	certIssuer := siteCertInfo["parsed"].(bson.M)["issuer_dn"]
+	cursor, err := db.AllCerts.Find(context.TODO(),
+		bson.M{
+			"valid": true,
+			"parsed.extensions.basic_constraints.is_ca": true,
+			"parsed.subject_dn":                         certIssuer,
+			"parsed.extensions.subject_key_id":          certAKID,
+		},
+		options.Find().SetProjection(bson.M{
+			"raw": 1,
+			"_id": 1,
+		}),
+	)
+	if err != nil {
+		return err
+	}
+
+	// Add each potential to the chain
+	for cursor.Next(context.TODO()) {
+		var immCert struct {
+			Raw string             `bson:"raw"`
+			id  primitive.ObjectID `bson:"_id"`
+		}
+		if err = cursor.Decode(&immCert); err != nil {
+			return err
+		}
+		realImmCert, err := parseCertB64(immCert.Raw)
+		if err != nil {
+			return err
+		}
+		realChain.AddCert(realImmCert)
+		allCertsArray = append(allCertsArray,
+			pair{immCert.id,
+				realImmCert,
+				make(map[string]struct{}),
+				false,
+			},
+		)
+	}
 	for rootName, root := range rootCAs {
 		validChains, err := realSiteCert.Verify(x509.VerifyOptions{
 			Roots:         root,
@@ -361,7 +312,7 @@ func validateCertsFromIDs(db *database.Database, rootCAs map[string]*x509.CertPo
 			continue
 		}
 		if len(validChains) > 0 {
-			siteIsValid = true
+			siteIsTransValid = true
 		}
 		for _, validChain := range validChains {
 			for chainIndex, validCert := range validChain {
@@ -385,6 +336,6 @@ func validateCertsFromIDs(db *database.Database, rootCAs map[string]*x509.CertPo
 			return err
 		}
 	}
-	err = db.SetScanValidation(id, siteIsValid, false)
+	err = db.SetScanValidation(id, siteIsTransValid, true)
 	return err
 }

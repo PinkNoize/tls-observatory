@@ -1,10 +1,10 @@
-# This script is used to copy CAs to another database
+# This script is used to copy certs to another database
 # This is useful if you are running a scan on another machine
 # and would like to import the results into a central database later
 # This script replaces certs so it may be a lengthy process
 #
 # Ex. python3 scripts/export_CAs.py <secondary db>
-#     This would copy all CA certs from the main db to the secondary db
+#     This would copy all certs from the main db to the secondary db
 #     This would make it easier to import the results from the secondary
 #     scan using mongorestore
 
@@ -78,9 +78,7 @@ def export_cert(doc, s_scanInfo, s_allCerts):
         s_allCerts.insert_one(doc)
 
 def export(m_allCerts, s_scanInfo, s_allCerts):
-    cursor = m_allCerts.find({
-        "parsed.extensions.basic_constraints.is_ca": True,
-    })
+    cursor = m_allCerts.find({})
     for doc in tqdm(cursor):
         export_cert(doc, s_scanInfo, s_allCerts)
 

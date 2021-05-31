@@ -42,9 +42,10 @@ type ZGrabResponse struct {
 	IP     *string      `json:"ip" bson:"ip"`
 	Data   *struct {
 		TLS *struct {
-			Status string `json:"status" bson:"status"`
-			Error  string `json:"error" bson:"error"`
-			Result *struct {
+			Timestamp string `json:"timestamp" bson:"timestamp"`
+			Status    string `json:"status" bson:"status"`
+			Error     string `json:"error" bson:"error"`
+			Result    *struct {
 				HandshakeLog *struct {
 					ServerCertificates *struct {
 						Certificate *interface{}   `json:"certificate" bson:"certificate"`
@@ -192,6 +193,21 @@ func New(client *mongo.Client) (Database, error) {
 	if err != nil {
 		return Database{}, err
 	}
+	// Index for speeding up transvalid queries
+	immIndex := mongo.IndexModel{
+		Keys: bson.D{
+			{"parsed.subject_dn", 1},
+		},
+		Options: options.Index().
+			SetPartialFilterExpression(bson.D{
+				{"parsed.extensions.basic_constraints.is_ca", true},
+				{"valid", true},
+			}),
+	}
+	_, err = allCerts.Indexes().CreateOne(context.TODO(), immIndex)
+	if err != nil {
+		return Database{}, err
+	}
 
 	preventDupsIP := mongo.IndexModel{
 		Keys: bson.M{
@@ -220,6 +236,19 @@ func New(client *mongo.Client) (Database, error) {
 			}),
 	}
 	_, err = scanInfo.Indexes().CreateOne(context.TODO(), preventDupsDomain)
+	if err != nil {
+		return Database{}, err
+	}
+	// Index for transvalid sites
+	transvalidSites := mongo.IndexModel{
+		Keys: bson.M{
+			"transvalid": 1,
+		}, Options: options.Index().
+			SetPartialFilterExpression(bson.M{
+				"transvalid": true,
+			}),
+	}
+	_, err = scanInfo.Indexes().CreateOne(context.TODO(), transvalidSites)
 	if err != nil {
 		return Database{}, err
 	}
@@ -369,12 +398,26 @@ func (d *Database) FlushCertInfo() error {
 	return err
 }
 
+func (d *Database) GetUntransvalidatedCerts() (*mongo.Cursor, error) {
+	query := bson.M{
+		"valid": bson.M{
+			"$ne": true,
+		},
+		"transvalid": bson.M{
+			"$exists": false,
+		},
+	}
+
+	return d.ScanInfo.Find(context.TODO(), query)
+}
+
 func (d *Database) GetUnvalidatedCerts() (*mongo.Cursor, error) {
 	query := bson.M{
 		"valid": bson.M{
 			"$exists": false,
 		},
 	}
+
 	return d.ScanInfo.Find(context.TODO(), query)
 }
 
@@ -387,12 +430,17 @@ func (d *Database) GetCertByID(id primitive.ObjectID) (bson.M, error) {
 	return cert, err
 }
 
-func (d *Database) SetScanValidation(id primitive.ObjectID, isValid bool) error {
-	updates := bson.M{
-		"$set": bson.M{
-			"valid": isValid,
-		},
+func (d *Database) SetScanValidation(id primitive.ObjectID, isValid bool, transvalid bool) error {
+	setUpdates := bson.M{
+		"valid": isValid,
 	}
+	if transvalid {
+		setUpdates["transvalid"] = isValid
+	}
+	updates := bson.M{
+		"$set": setUpdates,
+	}
+
 	_, err := d.ScanInfo.UpdateByID(context.TODO(),
 		id,
 		updates,
