@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"time"
 
 	"github.com/pkg/errors"
@@ -160,7 +161,7 @@ func New(client *mongo.Client) (Database, error) {
 	scanInfo := db.Collection(SCANINFO_COL)
 	preventDupsCerts := mongo.IndexModel{
 		Keys: bson.M{
-			"raw": 1,
+			"parsed.fingerprint_sha256": 1,
 		}, Options: options.Index().SetUnique(true),
 	}
 	_, err := allCerts.Indexes().CreateOne(context.TODO(), preventDupsCerts)
@@ -286,11 +287,14 @@ func (d *Database) InsertCert(cert interface{}, getID bool) (interface{}, error)
 		cert,
 	)
 	if err != nil {
+		rawCert := cert.(primitive.M)["raw"].(string)
+		fingerprint := cert.(primitive.M)["parsed"].(primitive.M)["fingerprint_sha256"]
 		if getID && mongo.IsDuplicateKeyError(err) {
 			find_result := d.AllCerts.FindOne(
 				context.TODO(),
+				// Search by unique key
 				bson.M{
-					"raw": cert.(primitive.M)["raw"],
+					"parsed.fingerprint_sha256": fingerprint,
 				},
 				options.FindOne().SetProjection(bson.M{"_id": 1}),
 			)
@@ -300,6 +304,20 @@ func (d *Database) InsertCert(cert interface{}, getID bool) (interface{}, error)
 				return nil, err
 			}
 			id = doc["_id"]
+			// Check if collision
+			if doc["raw"].(string) == rawCert {
+				// Report fingerprint collision
+				outputFile, err := os.OpenFile("output/collisions",
+					os.O_APPEND|os.O_CREATE|os.O_WRONLY,
+					0644,
+				)
+				if err != nil {
+					return nil, err
+				}
+				defer outputFile.Close()
+				outputFile.WriteString(rawCert + "\n")
+				return nil, fmt.Errorf("fingerprint collision: %v", rawCert)
+			}
 		} else {
 			return nil, err
 		}
