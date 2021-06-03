@@ -20,7 +20,7 @@ const CERT_DB = "tls-observatory"
 const SCANINFO_COL = "scanInfo"
 const ALLCERT_COL = "allCerts"
 
-const BUFFER_SIZE = 650
+const BUFFER_SIZE = 100
 
 type Database struct {
 	client       *mongo.Client
@@ -305,7 +305,7 @@ func (d *Database) InsertCert(cert interface{}, getID bool) (interface{}, error)
 			}
 			id = doc["_id"]
 			// Check if collision
-			if doc["raw"].(string) == rawCert {
+			if doc["raw"].(string) != rawCert {
 				// Report fingerprint collision
 				outputFile, err := os.OpenFile("output/collisions",
 					os.O_APPEND|os.O_CREATE|os.O_WRONLY,
@@ -418,9 +418,7 @@ func (d *Database) FlushCertInfo() error {
 
 func (d *Database) GetUntransvalidatedCerts() (*mongo.Cursor, error) {
 	query := bson.M{
-		"valid": bson.M{
-			"$ne": true,
-		},
+		"valid": false,
 		"transvalid": bson.M{
 			"$exists": false,
 		},
