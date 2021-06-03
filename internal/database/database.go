@@ -296,7 +296,7 @@ func (d *Database) InsertCert(cert interface{}, getID bool) (interface{}, error)
 				bson.M{
 					"parsed.fingerprint_sha256": fingerprint,
 				},
-				options.FindOne().SetProjection(bson.M{"_id": 1}),
+				options.FindOne().SetProjection(bson.M{"_id": 1, "raw": 1}),
 			)
 			var doc bson.M
 			err = find_result.Decode(&doc)
