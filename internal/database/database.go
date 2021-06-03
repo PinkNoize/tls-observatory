@@ -20,7 +20,7 @@ const CERT_DB = "tls-observatory"
 const SCANINFO_COL = "scanInfo"
 const ALLCERT_COL = "allCerts"
 
-const BUFFER_SIZE = 100
+const BUFFER_SIZE = 650
 
 type Database struct {
 	client       *mongo.Client
