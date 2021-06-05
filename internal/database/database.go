@@ -412,7 +412,7 @@ func (d *Database) GetUntransvalidatedCerts() (*mongo.Cursor, error) {
 		},
 	}
 
-	return d.ScanInfo.Find(context.TODO(), query)
+	return d.ScanInfo.Find(context.TODO(), query, options.Find().SetBatchSize(1000))
 }
 
 func (d *Database) GetUnvalidatedCerts() (*mongo.Cursor, error) {
@@ -422,7 +422,7 @@ func (d *Database) GetUnvalidatedCerts() (*mongo.Cursor, error) {
 		},
 	}
 
-	return d.ScanInfo.Find(context.TODO(), query)
+	return d.ScanInfo.Find(context.TODO(), query, options.Find().SetBatchSize(1000))
 }
 
 func (d *Database) GetCertByID(id primitive.ObjectID) (bson.M, error) {
@@ -432,6 +432,26 @@ func (d *Database) GetCertByID(id primitive.ObjectID) (bson.M, error) {
 	var cert bson.M
 	err := res.Decode(&cert)
 	return cert, err
+}
+
+func (d *Database) GetCertsByIDs(ids []primitive.ObjectID) ([]bson.M, error) {
+	var idArray primitive.A
+	for _, id := range ids {
+		idArray = append(idArray, id)
+	}
+	res, err := d.AllCerts.Find(context.TODO(), bson.M{
+		"_id": bson.M{
+			"$in": idArray,
+		},
+	})
+	if err != nil {
+		return nil, err
+	}
+	var certs []bson.M
+	if err = res.All(context.TODO(), &certs); err != nil {
+		return nil, err
+	}
+	return certs, nil
 }
 
 func (d *Database) SetScanValidation(id primitive.ObjectID, isValid bool, transvalid bool) error {
@@ -461,7 +481,29 @@ func (d *Database) SetCertValidation(id primitive.ObjectID, validRoots map[strin
 	for name := range validRoots {
 		validRootsNames = append(validRootsNames, name)
 	}
-	updates := bson.A{bson.M{
+	// updates := bson.A{bson.M{
+	// 	"$set": bson.M{
+	// 		"valid": bson.M{
+	// 			"$or": bson.A{
+	// 				isValid, "$valid",
+	// 			},
+	// 		},
+	// 	},
+	// }}
+
+	// _, err := d.AllCerts.UpdateByID(context.TODO(),
+	// 	id,
+	// 	updates,
+	// )
+	// if err != nil {
+	// 	return err
+	// }
+	updates2 := bson.M{
+		"$addToSet": bson.M{
+			"validRoots": bson.M{
+				"$each": validRootsNames,
+			},
+		},
 		"$set": bson.M{
 			"valid": bson.M{
 				"$or": bson.A{
@@ -469,23 +511,8 @@ func (d *Database) SetCertValidation(id primitive.ObjectID, validRoots map[strin
 				},
 			},
 		},
-	}}
-
+	}
 	_, err := d.AllCerts.UpdateByID(context.TODO(),
-		id,
-		updates,
-	)
-	if err != nil {
-		return err
-	}
-	updates2 := bson.M{
-		"$addToSet": bson.M{
-			"validRoots": bson.M{
-				"$each": validRootsNames,
-			},
-		},
-	}
-	_, err = d.AllCerts.UpdateByID(context.TODO(),
 		id,
 		updates2,
 	)

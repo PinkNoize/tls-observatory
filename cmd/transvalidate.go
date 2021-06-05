@@ -90,7 +90,7 @@ func findTransvalidCerts() error {
 	if err != nil {
 		return err
 	}
-
+	fmt.Println(cur.RemainingBatchLength())
 	// Setup Ctrl-C handler
 	signalChan := make(chan os.Signal, 1)
 	stopLooping := make(chan struct{})
@@ -217,6 +217,7 @@ func checkTransValidCertFromIDs(db *database.Database, rootCAs map[string]*x509.
 		cert     *x509.Certificate
 		validCAs map[string]struct{}
 		isRootCA bool
+		updated  bool
 	}
 	var allCertsArray []pair
 	// Add the site cert
@@ -225,13 +226,24 @@ func checkTransValidCertFromIDs(db *database.Database, rootCAs map[string]*x509.
 			realSiteCert,
 			make(map[string]struct{}),
 			false,
+			false,
 		},
 	)
-
-	for i := range chain {
-		curCertInfo, err := db.GetCertByID(chain[i])
+	var certChain []primitive.M
+	if len(chain) > 0 {
+		certChain, err = db.GetCertsByIDs(chain)
 		if err != nil {
 			return err
+		}
+	}
+	for _, curCertInfo := range certChain {
+		idCurCert_i, ok := curCertInfo["_id"]
+		if !ok {
+			return fmt.Errorf("document does not contain \"_id\"")
+		}
+		idCurCert, ok := idCurCert_i.(primitive.ObjectID)
+		if !ok {
+			return fmt.Errorf("\"_id\" not a primitive.ObjectID: %T", idCurCert_i)
 		}
 		rawCurCert_i, ok := curCertInfo["raw"]
 		if !ok {
@@ -247,13 +259,40 @@ func checkTransValidCertFromIDs(db *database.Database, rootCAs map[string]*x509.
 		}
 		realChain.AddCert(realCurCert)
 		allCertsArray = append(allCertsArray,
-			pair{chain[i],
+			pair{idCurCert,
 				realCurCert,
 				make(map[string]struct{}),
+				false,
 				false,
 			},
 		)
 	}
+	// for i := range chain {
+	// 	curCertInfo, err := db.GetCertByID(chain[i])
+	// 	if err != nil {
+	// 		return err
+	// 	}
+	// 	rawCurCert_i, ok := curCertInfo["raw"]
+	// 	if !ok {
+	// 		return fmt.Errorf("document does not contain \"raw\"")
+	// 	}
+	// 	rawCurCert, ok := rawCurCert_i.(string)
+	// 	if !ok {
+	// 		return fmt.Errorf("\"raw\" not a string: %T", rawCurCert_i)
+	// 	}
+	// 	realCurCert, err := parseCertB64(rawCurCert)
+	// 	if err != nil {
+	// 		return err
+	// 	}
+	// 	realChain.AddCert(realCurCert)
+	// 	allCertsArray = append(allCertsArray,
+	// 		pair{chain[i],
+	// 			realCurCert,
+	// 			make(map[string]struct{}),
+	// 			false,
+	// 		},
+	// 	)
+	// }
 
 	// Look for candidate intermediate certificates
 	strAKID := strings.ToLower(hex.EncodeToString(realSiteCert.AuthorityKeyId))
@@ -297,6 +336,7 @@ func checkTransValidCertFromIDs(db *database.Database, rootCAs map[string]*x509.
 				realImmCert,
 				make(map[string]struct{}),
 				false,
+				false,
 			},
 		)
 	}
@@ -316,14 +356,14 @@ func checkTransValidCertFromIDs(db *database.Database, rootCAs map[string]*x509.
 			siteIsTransValid = true
 		}
 		for _, validChain := range validChains {
-			for chainIndex, validCert := range validChain {
+			for _, validCert := range validChain {
 				// Find the ID for the Cert
 				for j := range allCertsArray {
 					if validCert.Equal(allCertsArray[j].cert) {
 						// Mark Cert as Valid
-						allCertsArray[j].validCAs[rootName] = struct{}{}
-						if chainIndex+1 == len(validChain) {
-							allCertsArray[j].isRootCA = true
+						if _, ok = allCertsArray[j].validCAs[rootName]; !ok {
+							allCertsArray[j].validCAs[rootName] = struct{}{}
+							allCertsArray[j].updated = true
 						}
 						break
 					}
@@ -332,9 +372,11 @@ func checkTransValidCertFromIDs(db *database.Database, rootCAs map[string]*x509.
 		}
 	}
 	for _, cert := range allCertsArray {
-		err = db.SetCertValidation(cert.id, cert.validCAs)
-		if err != nil {
-			return err
+		if cert.updated {
+			err = db.SetCertValidation(cert.id, cert.validCAs)
+			if err != nil {
+				return err
+			}
 		}
 	}
 	err = db.SetScanValidation(id, siteIsTransValid, true)

@@ -322,11 +322,21 @@ func validateCertsFromIDs(db *database.Database, rootCAs map[string]*x509.CertPo
 			false,
 		},
 	)
-
-	for i := range chain {
-		curCertInfo, err := db.GetCertByID(chain[i])
+	var certChain []primitive.M
+	if len(chain) > 0 {
+		certChain, err = db.GetCertsByIDs(chain)
 		if err != nil {
 			return err
+		}
+	}
+	for _, curCertInfo := range certChain {
+		idCurCert_i, ok := curCertInfo["_id"]
+		if !ok {
+			return fmt.Errorf("document does not contain \"_id\"")
+		}
+		idCurCert, ok := idCurCert_i.(primitive.ObjectID)
+		if !ok {
+			return fmt.Errorf("\"_id\" not a primitive.ObjectID: %T", idCurCert_i)
 		}
 		rawCurCert_i, ok := curCertInfo["raw"]
 		if !ok {
@@ -342,13 +352,40 @@ func validateCertsFromIDs(db *database.Database, rootCAs map[string]*x509.CertPo
 		}
 		realChain.AddCert(realCurCert)
 		allCertsArray = append(allCertsArray,
-			pair{chain[i],
+			pair{idCurCert,
 				realCurCert,
 				make(map[string]struct{}),
 				false,
 			},
 		)
 	}
+
+	// for i := range chain {
+	// 	curCertInfo, err := db.GetCertByID(chain[i])
+	// 	if err != nil {
+	// 		return err
+	// 	}
+	// 	rawCurCert_i, ok := curCertInfo["raw"]
+	// 	if !ok {
+	// 		return fmt.Errorf("document does not contain \"raw\"")
+	// 	}
+	// 	rawCurCert, ok := rawCurCert_i.(string)
+	// 	if !ok {
+	// 		return fmt.Errorf("\"raw\" not a string: %T", rawCurCert_i)
+	// 	}
+	// 	realCurCert, err := parseCertB64(rawCurCert)
+	// 	if err != nil {
+	// 		return err
+	// 	}
+	// 	realChain.AddCert(realCurCert)
+	// 	allCertsArray = append(allCertsArray,
+	// 		pair{chain[i],
+	// 			realCurCert,
+	// 			make(map[string]struct{}),
+	// 			false,
+	// 		},
+	// 	)
+	// }
 	for rootName, root := range rootCAs {
 		validChains, err := realSiteCert.Verify(x509.VerifyOptions{
 			Roots:         root,
