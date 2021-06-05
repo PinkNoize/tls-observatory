@@ -481,29 +481,7 @@ func (d *Database) SetCertValidation(id primitive.ObjectID, validRoots map[strin
 	for name := range validRoots {
 		validRootsNames = append(validRootsNames, name)
 	}
-	// updates := bson.A{bson.M{
-	// 	"$set": bson.M{
-	// 		"valid": bson.M{
-	// 			"$or": bson.A{
-	// 				isValid, "$valid",
-	// 			},
-	// 		},
-	// 	},
-	// }}
-
-	// _, err := d.AllCerts.UpdateByID(context.TODO(),
-	// 	id,
-	// 	updates,
-	// )
-	// if err != nil {
-	// 	return err
-	// }
-	updates2 := bson.M{
-		"$addToSet": bson.M{
-			"validRoots": bson.M{
-				"$each": validRootsNames,
-			},
-		},
+	updates := bson.A{bson.M{
 		"$set": bson.M{
 			"valid": bson.M{
 				"$or": bson.A{
@@ -511,8 +489,23 @@ func (d *Database) SetCertValidation(id primitive.ObjectID, validRoots map[strin
 				},
 			},
 		},
-	}
+	}}
+
 	_, err := d.AllCerts.UpdateByID(context.TODO(),
+		id,
+		updates,
+	)
+	if err != nil {
+		return err
+	}
+	updates2 := bson.M{
+		"$addToSet": bson.M{
+			"validRoots": bson.M{
+				"$each": validRootsNames,
+			},
+		},
+	}
+	_, err = d.AllCerts.UpdateByID(context.TODO(),
 		id,
 		updates2,
 	)
