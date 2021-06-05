@@ -181,22 +181,10 @@ func New(client *mongo.Client) (Database, error) {
 	if err != nil {
 		return Database{}, err
 	}
-	isCAIndex := mongo.IndexModel{
-		Keys: bson.M{
-			"parsed.extensions.basic_constraints.is_ca": 1,
-		},
-		Options: options.Index().
-			SetPartialFilterExpression(bson.M{
-				"parsed.extensions.basic_constraints.is_ca": true,
-			}),
-	}
-	_, err = allCerts.Indexes().CreateOne(context.TODO(), isCAIndex)
-	if err != nil {
-		return Database{}, err
-	}
 	// Index for speeding up transvalid queries
 	immIndex := mongo.IndexModel{
 		Keys: bson.D{
+			{"parsed.extensions.basic_constraints.is_ca", 1},
 			{"parsed.subject_dn", 1},
 		},
 		Options: options.Index().

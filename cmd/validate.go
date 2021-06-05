@@ -171,6 +171,7 @@ func validateCertChains() error {
 	if err != nil {
 		return err
 	}
+	fmt.Println("Getting unvalidated sites...")
 	cur, err := db.GetUnvalidatedCerts()
 	if err != nil {
 		return err

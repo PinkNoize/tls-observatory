@@ -85,6 +85,7 @@ func findTransvalidCerts() error {
 		return err
 	}
 
+	fmt.Println("Getting untransvalidated sites...")
 	cur, err := db.GetUntransvalidatedCerts()
 	if err != nil {
 		return err
@@ -308,7 +309,7 @@ func checkTransValidCertFromIDs(db *database.Database, rootCAs map[string]*x509.
 			CurrentTime:   t,
 		})
 		if err != nil {
-			log.Println(err)
+			//log.Println(err)
 			continue
 		}
 		if len(validChains) > 0 {
