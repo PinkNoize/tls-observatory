@@ -1,5 +1,6 @@
 from observatory_utils import get_creds, print_results
 import pymongo
+import bisect
 
 # Find certs with different fingerprints but same signature
 def certs_same_sig(allCerts):
@@ -144,6 +145,80 @@ def tls_version_count(scanInfo):
     ])
     return cursor
 
+def certs_per_scanned_name(scanInfo, allCerts, top_n=1000):
+    docs = scanInfo.find(
+        filter={'valid': True},
+        projection={
+            'domain': 1,
+            'ip': 1,
+        },
+    )
+    name_count = 1
+    avg = 0
+    top = []
+    for doc in docs:
+        if 'domain' in doc:
+            name = doc['domain']
+        else:
+            name = doc['ip']
+
+        certCount = allCerts.count_documents(filter={
+            'valid': True,
+            'parsed.extensions.basic_constraints.is_ca': False,
+            'parsed.names': name,
+        })
+        avg += (certCount - avg)/name_count
+        name_count += 1
+        if len(top) < top_n:
+            bisect.insort(top, (certCount, name))
+        else:
+            if certCount > top[0][0]:
+                top.pop(0)
+                bisect.insort(top, (certCount, name))
+    for item in reversed(top):
+        yield f"{item[1]}: {item[0]}"
+    yield ""
+    yield f"Avg: {avg}"
+    yield f"Num names: {name_count}"
+    return
+
+
+def cert_count_extensions(allCerts):
+    cursor = allCerts.aggregate([
+        {
+            "$match": {
+                "valid": True,
+           },
+        },
+        {
+            "$project": {
+                "extensions": {
+                    "$objectToArray": "$parsed.extensions"
+                }
+            }
+        },
+        {
+            "$unwind": "$extensions"
+        },
+        {
+            "$group": {
+                "_id": "$extensions.k",
+                "count": {
+                    "$sum": 1,
+                }
+            }
+        },
+        {
+            "$project": {
+                "extension": "$_id",
+                "_id" : 0,
+                "count": 1,
+            }
+        }
+    ],
+    allowDiskUse=True)
+    return cursor
+
 def main():
     creds = get_creds()
     client = pymongo.MongoClient(
@@ -154,11 +229,14 @@ def main():
     db=client['tls-observatory']
     scanInfo = db['scanInfo']
     allCerts = db['allCerts']
-    print_results("Certificates With Same Signature", certs_same_sig(allCerts))
+    
     print_results("Basic Constraint:CA != Key Usage Sign", key_usage_match_ca_check(allCerts))
     print_results("CA Certs per Country", ca_country_stats(allCerts))
+    print_results("Cert Extensions Counts", cert_count_extensions(allCerts))
     print_results("TLS Version Stats", tls_version_count(scanInfo))
+    print_results("Certificates With Same Signature", certs_same_sig(allCerts))
     print_results("Certs with IPs", find_ip_names(allCerts))
+    print_results("Certs per scanned name", certs_per_scanned_name(scanInfo, allCerts))
 
 if __name__ == "__main__":
     main()

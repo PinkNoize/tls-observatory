@@ -7,6 +7,9 @@
 #     This would copy all certs from the main db to the secondary db
 #     This would make it easier to import the results from the secondary
 #     scan using mongorestore
+#
+# NOTE: This has not been tested, it is faster to mongodump | mongorestore
+#       before starting a scan
 
 import pymongo
 import sys
@@ -21,12 +24,15 @@ def export_cert(doc, s_scanInfo, s_allCerts):
         return
     except pymongo.errors.DuplicateKeyError:
         dup = s_allCerts.find_one({
-            'raw': doc['raw'],
+            'parsed.fingerprint_sha256': doc['parsed']['fingerprint_sha256'],
         })
         if dup is None:
             print(f"Could not find duplicate cert: {doc}")
             return
         dup_id = dup['_id']
+        if dup_id == exp_cert_id:
+            # it has already been exported
+            return
         # Get all scans where dup_id is used and replace with the new_id
         cursor = s_scanInfo.find(
             {

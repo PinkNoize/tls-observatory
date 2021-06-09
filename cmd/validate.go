@@ -360,32 +360,6 @@ func validateCertsFromIDs(db *database.Database, rootCAs map[string]*x509.CertPo
 		)
 	}
 
-	// for i := range chain {
-	// 	curCertInfo, err := db.GetCertByID(chain[i])
-	// 	if err != nil {
-	// 		return err
-	// 	}
-	// 	rawCurCert_i, ok := curCertInfo["raw"]
-	// 	if !ok {
-	// 		return fmt.Errorf("document does not contain \"raw\"")
-	// 	}
-	// 	rawCurCert, ok := rawCurCert_i.(string)
-	// 	if !ok {
-	// 		return fmt.Errorf("\"raw\" not a string: %T", rawCurCert_i)
-	// 	}
-	// 	realCurCert, err := parseCertB64(rawCurCert)
-	// 	if err != nil {
-	// 		return err
-	// 	}
-	// 	realChain.AddCert(realCurCert)
-	// 	allCertsArray = append(allCertsArray,
-	// 		pair{chain[i],
-	// 			realCurCert,
-	// 			make(map[string]struct{}),
-	// 			false,
-	// 		},
-	// 	)
-	// }
 	for rootName, root := range rootCAs {
 		validChains, err := realSiteCert.Verify(x509.VerifyOptions{
 			Roots:         root,
