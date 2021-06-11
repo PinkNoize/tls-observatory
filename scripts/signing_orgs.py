@@ -14,12 +14,12 @@ def get_ca_orgs(allCerts):
         },
         {
             "$group": {
-                "_id": "$parsed.issuer.organization",
+                "_id": "$parsed.subject.organization",
                 "count": {
                     "$sum": 1
                 },
                 "countries": {
-                    "$push": "$parsed.issuer.country"
+                    "$push": "$parsed.subject.country"
                 }
             }
         },
