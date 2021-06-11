@@ -52,6 +52,7 @@ def get_ca_duplicate_keys(allCerts):
             try:
                 res_str += f"\t\tSubject: {cert['parsed']['subject_dn']}\n"
                 res_str += f"\t\tIssuer: {cert['parsed']['issuer_dn']}\n"
+                res_str += f"\t\tValidity: {cert['parsed']['validity']['start']} - {cert['parsed']['validity']['end']}\n"
                 res_str += f"\t\tValid Roots: {cert['validRoots']}\n"
             except KeyError:
                 pass
