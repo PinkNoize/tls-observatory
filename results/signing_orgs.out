@@ -1,0 +1,415 @@
+-------------------- Root CA Orgs ----------------
+{'count': 2, 'organization': ['Cisco Systems'], 'countries': ['US']}
+{'count': 2, 'organization': ['IZENPE S.A.'], 'countries': ['ES']}
+{'count': 2, 'organization': ['AC CAMERFIRMA S.A.'], 'countries': ['ES']}
+{'count': 6, 'organization': ['DATEV eG'], 'countries': ['DE']}
+{'count': 1, 'organization': ['Telia Finland Oyj'], 'countries': ['FI']}
+{'count': 1, 'organization': ['CERTSIGN SA'], 'countries': ['RO']}
+{'count': 1, 'organization': ['TeliaSonera'], 'countries': []}
+{'count': 2, 'organization': ['Asseco Data Systems S.A.'], 'countries': ['PL']}
+{'count': 3, 'organization': ['StartCom Ltd.'], 'countries': ['IL']}
+{'count': 4, 'organization': ['Amazon'], 'countries': ['US']}
+{'count': 4, 'organization': ['COMODO CA Limited'], 'countries': ['GB']}
+{'count': 4, 'organization': ['SECOM Trust Systems CO.,LTD.'], 'countries': ['JP']}
+{'count': 3, 'organization': ['eMudhra Inc'], 'countries': ['US']}
+{'count': 1, 'organization': ['Comodo CA Limited'], 'countries': ['GB']}
+{'count': 1, 'organization': ['LuxTrust s.a.'], 'countries': ['LU']}
+{'count': 1, 'organization': ['Halcom d.d.'], 'countries': ['SI']}
+{'count': 1, 'organization': ['Sonera'], 'countries': ['FI']}
+{'count': 2, 'organization': ['Certinomis'], 'countries': ['FR']}
+{'count': 1, 'organization': ['Internet Security Research Group'], 'countries': ['US']}
+{'count': 2, 'organization': ['FNMT-RCM'], 'countries': ['ES']}
+{'count': 1, 'organization': ['Česká pošta, s.p.'], 'countries': ['CZ']}
+{'count': 2, 'organization': ['e-commerce monitoring GmbH'], 'countries': ['AT']}
+{'count': 2, 'organization': ['Agencia Notarial de Certificacion S.L.U. - CIF B83395988'], 'countries': ['ES']}
+{'count': 1, 'organization': ['Swedish Social Insurance Agency'], 'countries': ['SE']}
+{'count': 2, 'organization': ['ComSign'], 'countries': ['IL']}
+{'count': 8, 'organization': ['DigiCert Inc'], 'countries': ['US']}
+{'count': 2, 'organization': ['Microsec Ltd.'], 'countries': ['HU']}
+{'count': 4, 'organization': ['UniTrust'], 'countries': ['CN']}
+{'count': 1, 'organization': ['Thawte'], 'countries': ['ZA']}
+{'count': 1, 'organization': ['Netrust Certificate Authority 1'], 'countries': ['SG']}
+{'count': 3, 'organization': ['Symantec Corporation'], 'countries': ['US']}
+{'count': 1, 'organization': ['ZETES SA (VATBE-0408425626)'], 'countries': ['BE']}
+{'count': 4, 'organization': ['SSL Corporation'], 'countries': ['US']}
+{'count': 2, 'organization': ['SecureTrust Corporation'], 'countries': ['US']}
+{'count': 2, 'organization': ['VISA'], 'countries': ['US']}
+{'count': 3, 'organization': ['D-Trust GmbH'], 'countries': ['DE']}
+{'count': 1, 'organization': ['Turkiye Bilimsel ve Teknolojik Arastirma Kurumu - TUBITAK'], 'countries': ['TR']}
+{'count': 2, 'organization': ['IdenTrust'], 'countries': ['US']}
+{'count': 3, 'organization': ['thawte, Inc.'], 'countries': ['US']}
+{'count': 1, 'organization': ['E-Tuğra EBG Bilişim Teknolojileri ve Hizmetleri A.Ş.'], 'countries': ['TR']}
+{'count': 1, 'organization': ['Thawte Consulting cc'], 'countries': ['ZA']}
+{'count': 1, 'organization': ['Agencia Catalana de Certificacio (NIF Q-0801176-I)'], 'countries': ['ES']}
+{'count': 1, 'organization': ['Netrust Pte Ltd'], 'countries': ['SG']}
+{'count': 2, 'organization': ['T-Systems Enterprise Services GmbH'], 'countries': ['DE']}
+{'count': 1, 'organization': ['NISZ Nemzeti Infokommunikációs Szolgáltató Zrt.'], 'countries': ['HU']}
+{'count': 1, 'organization': ['GUANG DONG CERTIFICATE AUTHORITY CO.,LTD.'], 'countries': ['CN']}
+{'count': 3, 'organization': ['Apple Inc.'], 'countries': ['US']}
+{'count': 7, 'organization': ['Microsoft Corporation'], 'countries': ['US']}
+{'count': 1, 'organization': ['LuxTrust S.A.'], 'countries': ['LU']}
+{'count': 1, 'organization': ['WFA Hotspot 2.0'], 'countries': ['US']}
+{'count': 4, 'organization': ['The USERTRUST Network'], 'countries': ['US']}
+{'count': 1, 'organization': ['Republika Slovenija'], 'countries': ['SI']}
+{'count': 1, 'organization': ['ARGE DATEN - Austrian Society for Data Protection'], 'countries': ['AT']}
+{'count': 3, 'organization': ['eMudhra Technologies Limited'], 'countries': ['IN']}
+{'count': 1, 'organization': ['LAWtrust'], 'countries': ['ZA']}
+{'count': 1, 'organization': ['Actalis S.p.A./03358520967'], 'countries': ['IT']}
+{'count': 3, 'organization': ['Swisscom'], 'countries': ['ch']}
+{'count': 2, 'organization': ['Dhimyotis'], 'countries': ['FR']}
+{'count': 1, 'organization': ['GOV'], 'countries': ['AU']}
+{'count': 1, 'organization': ['ANF Autoridad de Certificacion'], 'countries': ['ES']}
+{'count': 1, 'organization': ['Colegio de Registradores de la Propiedad y Mercantiles de España'], 'countries': ['ES']}
+{'count': 1, 'organization': ['Digidentity B.V.'], 'countries': ['NL']}
+{'count': 1, 'organization': ['Macao Post'], 'countries': ['MO']}
+{'count': 3, 'organization': ['TrustCor Systems S. de R.L.'], 'countries': ['PA']}
+{'count': 1, 'organization': ['Verizon Business'], 'countries': ['US']}
+{'count': 6, 'organization': ['GeoTrust Inc.'], 'countries': ['US']}
+{'count': 2, 'organization': ['Government Root Certification Authority'], 'countries': ['TW']}
+{'count': 2, 'organization': ['AC Camerfirma SA CIF A82743287'], 'countries': ['EU']}
+{'count': 1, 'organization': ['admin'], 'countries': ['ch']}
+{'count': 1, 'organization': ['Government of Korea'], 'countries': ['KR']}
+{'count': 1, 'organization': ['Agence Nationale de Certification Electronique'], 'countries': ['TN']}
+{'count': 1, 'organization': ['Digital Signature Trust Co.'], 'countries': []}
+{'count': 1, 'organization': ['Cybertrust, Inc'], 'countries': []}
+{'count': 3, 'organization': ['WISeKey'], 'countries': ['CH']}
+{'count': 2, 'organization': ['NetLock Kft.'], 'countries': ['HU']}
+{'count': 1, 'organization': ['certSIGN'], 'countries': ['RO']}
+{'count': 2, 'organization': ['Vaestorekisterikeskus CA'], 'countries': ['FI']}
+{'count': 1, 'organization': ['Apple Computer, Inc.'], 'countries': ['US']}
+{'count': 3, 'organization': ['Chunghwa Telecom Co., Ltd.'], 'countries': ['TW']}
+{'count': 2, 'organization': None, 'countries': ['BE', 'ES']}
+{'count': 1, 'organization': ['Japan Certification Services, Inc.'], 'countries': ['JP']}
+{'count': 4, 'organization': ['Network Solutions L.L.C.'], 'countries': ['US']}
+{'count': 5, 'organization': ['GlobalSign'], 'countries': []}
+{'count': 1, 'organization': ['AS Sertifitseerimiskeskus'], 'countries': ['EE']}
+{'count': 1, 'organization': ['Open Access Technology International Inc'], 'countries': ['US']}
+{'count': 1, 'organization': ['ComSign Ltd.'], 'countries': ['IL']}
+{'count': 1, 'organization': ['KISA'], 'countries': ['KR']}
+{'count': 4, 'organization': ['Entrust, Inc.'], 'countries': ['US']}
+{'count': 1, 'organization': ['The Federal Authorities of the Swiss Confederation'], 'countries': ['CH']}
+{'count': 3, 'organization': ['AddTrust AB'], 'countries': ['SE']}
+{'count': 2, 'organization': ['Unizeto Technologies S.A.'], 'countries': ['PL']}
+{'count': 2, 'organization': ['První certifikační autorita, a.s.'], 'countries': ['CZ']}
+{'count': 1, 'organization': ['Electronic Transactions Development Agency (Public Organization)'], 'countries': ['TH']}
+{'count': 1, 'organization': ['GoDaddy.com, Inc.'], 'countries': ['US']}
+{'count': 1, 'organization': ['MULTICERT - Serviços de Certificação Electrónica S.A.'], 'countries': ['PT']}
+{'count': 1, 'organization': ['XRamp Security Services Inc'], 'countries': ['US']}
+{'count': 6, 'organization': ['QuoVadis Limited'], 'countries': ['BM']}
+{'count': 1, 'organization': ['NetLock Halozatbiztonsagi Kft.'], 'countries': ['HU']}
+{'count': 3, 'organization': ['SwissSign AG'], 'countries': ['CH']}
+{'count': 2, 'organization': ['Buypass AS-983163327'], 'countries': ['NO']}
+{'count': 1, 'organization': ['U.S. Government'], 'countries': ['US']}
+{'count': 3, 'organization': ['OpenTrust'], 'countries': ['FR']}
+{'count': 3, 'organization': ['Hellenic Academic and Research Institutions Cert. Authority'], 'countries': ['GR']}
+{'count': 1, 'organization': ['CONSEJO GENERAL DE LA ABOGACIA'], 'countries': ['ES']}
+{'count': 1, 'organization': ['KEYNECTIS'], 'countries': ['FR']}
+{'count': 1, 'organization': ['National Center for Digital Certification'], 'countries': ['SA']}
+{'count': 1, 'organization': ['Financijska agencija'], 'countries': ['HR']}
+{'count': 4, 'organization': ['Google Trust Services LLC'], 'countries': ['US']}
+{'count': 1, 'organization': ['The Go Daddy Group, Inc.'], 'countries': ['US']}
+{'count': 3, 'organization': ['Staat der Nederlanden'], 'countries': ['NL']}
+{'count': 1, 'organization': ['DIRECCION GENERAL DE LA POLICIA'], 'countries': ['ES']}
+{'count': 1, 'organization': ['NAVER BUSINESS PLATFORM Corp.'], 'countries': ['KR']}
+{'count': 1, 'organization': ['Sistema Nacional de Certificacion Electronica'], 'countries': ['VE']}
+{'count': 1, 'organization': ['EDICOM'], 'countries': ['ES']}
+{'count': 1, 'organization': ['SECOM Trust.net'], 'countries': ['JP']}
+{'count': 2, 'organization': ['Krajowa Izba Rozliczeniowa S.A.'], 'countries': ['PL']}
+{'count': 4, 'organization': ['AffirmTrust'], 'countries': ['US']}
+{'count': 9, 'organization': ['VeriSign, Inc.'], 'countries': ['US']}
+{'count': 3, 'organization': ['Starfield Technologies, Inc.'], 'countries': ['US']}
+{'count': 1, 'organization': ['ACCV'], 'countries': ['ES']}
+{'count': 2, 'organization': ['China Financial Certification Authority'], 'countries': ['CN']}
+{'count': 1, 'organization': ['Atos'], 'countries': ['DE']}
+{'count': 1, 'organization': ['Deutsche Telekom AG'], 'countries': ['DE']}
+{'count': 1, 'organization': ['Baltimore'], 'countries': ['IE']}
+{'count': 4, 'organization': ['ICP-Brasil'], 'countries': ['BR']}
+{'count': 2, 'organization': ['Disig a.s.'], 'countries': ['SK']}
+{'count': 2, 'organization': ['AC Camerfirma S.A.'], 'countries': ['EU']}
+{'count': 2, 'organization': ['India PKI'], 'countries': ['IN']}
+{'count': 3, 'organization': ['Hongkong Post'], 'countries': ['HK']}
+{'count': 1, 'organization': ['Trustis Limited'], 'countries': ['GB']}
+{'count': 1, 'organization': ['MINISTERIO DE TRABAJO E INMIGRACION'], 'countries': ['ES']}
+{'count': 1, 'organization': ['Notarius Inc'], 'countries': ['CA']}
+{'count': 1, 'organization': ['Entrust.net'], 'countries': []}
+{'count': 1, 'organization': ['TÜRKTRUST Bilgi İletişim ve Bilişim Güvenliği Hizmetleri A.Ş.'], 'countries': ['TR']}
+{'count': 3, 'organization': ['Certplus'], 'countries': ['FR']}
+{'count': 1, 'organization': ['National Digital Certification Agency'], 'countries': ['TN']}
+{'count': 1, 'organization': ['TRUST2408'], 'countries': ['DK']}
+{'count': 1, 'organization': ['Sociedad Cameral de Certificación Digital - Certicámara S.A.'], 'countries': ['CO']}
+{'count': 1, 'organization': ['Echoworx Corporation'], 'countries': ['CA']}
+{'count': 1, 'organization': ['Carillon Information Security Inc.'], 'countries': ['CA']}
+{'count': 1, 'organization': ['Unizeto Sp. z o.o.'], 'countries': ['PL']}
+{'count': 2, 'organization': ['TrustFactory(Pty)Ltd'], 'countries': ['ZA']}
+{'count': 1, 'organization': ['BYTE Computer S.A.'], 'countries': ['GR']}
+{'count': 2, 'organization': ['TAIWAN-CA'], 'countries': ['TW']}
+{'count': 12, 'organization': ['GlobalSign nv-sa'], 'countries': ['BE']}
+{'count': 1, 'organization': ['Česká pošta, s.p. [IČ 47114983]'], 'countries': ['CZ']}
+{'count': 3, 'organization': ['Trustwave Holdings, Inc.'], 'countries': ['US']}
+Total Items: 147
+--------------------------------------------------
+---------------------- CA Orgs -------------------
+{'count': 2, 'organization': ['Deutsche Post AG'], 'countries': ['DE']}
+{'count': 12, 'organization': ['SECOM Trust Systems CO.,LTD.'], 'countries': ['JP']}
+{'count': 1, 'organization': ['LuxTrust s.a.'], 'countries': ['LU']}
+{'count': 2, 'organization': ['Asseco Data Systems S.A.'], 'countries': ['PL']}
+{'count': 3, 'organization': ['Baidu, Inc.'], 'countries': ['CN']}
+{'count': 1, 'organization': ['Unizeto Sp. z o.o.'], 'countries': ['PL']}
+{'count': 1, 'organization': ['PSW GROUP GmbH & Co. KG'], 'countries': ['DE']}
+{'count': 1, 'organization': ['McAfee, Inc.'], 'countries': ['US']}
+{'count': 1, 'organization': ['TÜRKTRUST Bilgi İletişim ve Bilişim Güvenliği Hizmetleri A.Ş.'], 'countries': ['TR']}
+{'count': 3, 'organization': ['Certplus'], 'countries': ['FR']}
+{'count': 2, 'organization': ['TrustFactory(Pty)Ltd'], 'countries': ['ZA']}
+{'count': 1, 'organization': ['Entrust.net'], 'countries': []}
+{'count': 1, 'organization': ['TRUST2408'], 'countries': ['DK']}
+{'count': 1, 'organization': ['Telecom Italia Trust Technologies S.r.l.'], 'countries': ['IT']}
+{'count': 5, 'organization': ['TAIWAN-CA'], 'countries': ['TW']}
+{'count': 3, 'organization': ['SOLUTI - SOLUCOES EM NEGOCIOS INTELIGENTES S/A'], 'countries': ['BR']}
+{'count': 4, 'organization': ['Cisco Systems'], 'countries': ['US']}
+{'count': 1, 'organization': ['Max-Planck-Gesellschaft'], 'countries': ['DE']}
+{'count': 9, 'organization': ['Sectigo Limited'], 'countries': ['GB']}
+{'count': 11, 'organization': ['Trustwave Holdings, Inc.'], 'countries': ['US']}
+{'count': 2, 'organization': ['DNEncrypt, Inc'], 'countries': ['US']}
+{'count': 1, 'organization': ['Dreamcommerce S.A.'], 'countries': ['PL']}
+{'count': 1, 'organization': ['Pardazeshgaran Shahr Hooshmand Yekta Co.'], 'countries': ['IR']}
+{'count': 6, 'organization': ['Starfield Technologies, Inc.'], 'countries': ['US']}
+{'count': 1, 'organization': ['EDICOM'], 'countries': ['ES']}
+{'count': 1, 'organization': ['Digi-Sign Limited'], 'countries': ['IE']}
+{'count': 2, 'organization': ['Cloudflare, Inc.'], 'countries': ['US']}
+{'count': 1, 'organization': ['SECOM Trust.net'], 'countries': ['JP']}
+{'count': 5, 'organization': ['GoGetSSL'], 'countries': ['LV']}
+{'count': 2, 'organization': ['Trust Provider B.V.'], 'countries': ['NL']}
+{'count': 3, 'organization': ['Krajowa Izba Rozliczeniowa S.A.'], 'countries': ['PL']}
+{'count': 4, 'organization': ['VALID CERTIFICADORA DIGITAL'], 'countries': ['BR']}
+{'count': 1, 'organization': ['Deutsche Telekom AG'], 'countries': ['DE']}
+{'count': 2, 'organization': ['Atos'], 'countries': ['DE']}
+{'count': 4, 'organization': ['China Financial Certification Authority'], 'countries': ['CN']}
+{'count': 12, 'organization': ['ICP-Brasil'], 'countries': ['BR']}
+{'count': 5, 'organization': ['AC Camerfirma S.A.'], 'countries': ['ES', 'EU']}
+{'count': 1, 'organization': ['Baltimore'], 'countries': ['IE']}
+{'count': 6, 'organization': ['SwissSign AG'], 'countries': ['CH']}
+{'count': 9, 'organization': ['Buypass AS-983163327'], 'countries': ['NO']}
+{'count': 5, 'organization': ['Cybertrust Japan Co., Ltd.'], 'countries': ['JP']}
+{'count': 1, 'organization': ['KEYNECTIS'], 'countries': ['FR']}
+{'count': 12, 'organization': ['Hellenic Academic and Research Institutions Cert. Authority'], 'countries': ['GR']}
+{'count': 3, 'organization': ['GoDaddy.com, Inc.'], 'countries': ['US']}
+{'count': 14, 'organization': ['QuoVadis Limited'], 'countries': ['BM']}
+{'count': 2, 'organization': ['Netflix, Inc.'], 'countries': ['US']}
+{'count': 1, 'organization': ['Fraunhofer'], 'countries': ['DE']}
+{'count': 2, 'organization': ['Fiducia & GAD IT AG'], 'countries': ['DE']}
+{'count': 2, 'organization': ['Sistema Nacional de Certificacion Electronica'], 'countries': ['VE']}
+{'count': 2, 'organization': ['Aetna Inc'], 'countries': ['US']}
+{'count': 2, 'organization': ['Corporation Service Company'], 'countries': ['US']}
+{'count': 1, 'organization': ['National Center for Digital Certification'], 'countries': ['SA']}
+{'count': 1, 'organization': ['AS Sertifitseerimiskeskus'], 'countries': ['EE']}
+{'count': 1, 'organization': ['Institute of Accelerating Systems and Applications'], 'countries': ['GR']}
+{'count': 1, 'organization': ['Technische Universitaet Ilmenau'], 'countries': ['DE']}
+{'count': 1, 'organization': ['Soluciones Corporativas IP, SL'], 'countries': ['ES']}
+{'count': 3, 'organization': ['Vaestorekisterikeskus CA'], 'countries': ['FI']}
+{'count': 3, 'organization': ['Quantum CA Limited'], 'countries': ['GB']}
+{'count': 1, 'organization': ['TRUSTCUBES LIMITED'], 'countries': ['GB']}
+{'count': 8, 'organization': ['GlobalSign'], 'countries': []}
+{'count': 2, 'organization': None, 'countries': ['BE', 'ES']}
+{'count': 10, 'organization': ['Chunghwa Telecom Co., Ltd.'], 'countries': ['TW']}
+{'count': 3, 'organization': ['Global Digital Cybersecurity Authority Co., Ltd.'], 'countries': ['CN']}
+{'count': 9, 'organization': ['Unizeto Technologies S.A.'], 'countries': ['PL']}
+{'count': 2, 'organization': ['上海锐成信息科技有限公司'], 'countries': ['CN']}
+{'count': 1, 'organization': ['The Federal Authorities of the Swiss Confederation'], 'countries': ['CH']}
+{'count': 3, 'organization': ['První certifikační autorita, a.s.'], 'countries': ['CZ']}
+{'count': 1, 'organization': ['ComSign Ltd.'], 'countries': ['IL']}
+{'count': 2, 'organization': ['Verein zur Foerderung eines Deutschen Forschungsnetzes e. V.'], 'countries': ['DE']}
+{'count': 2, 'organization': ['Digidentity B.V.'], 'countries': ['NL']}
+{'count': 5, 'organization': ['TrustCor Systems S. de R.L.'], 'countries': ['PA']}
+{'count': 2, 'organization': ['Site Blindado S.A.'], 'countries': ['BR']}
+{'count': 2, 'organization': ['Dhimyotis'], 'countries': ['FR']}
+{'count': 2, 'organization': ['GOV'], 'countries': ['AU']}
+{'count': 1, 'organization': ['Genious Communications'], 'countries': ['MA']}
+{'count': 1, 'organization': ['Intesa Sanpaolo S.p.A.'], 'countries': ['IT']}
+{'count': 1, 'organization': ['DigiCert Inc.'], 'countries': ['US']}
+{'count': 1, 'organization': ['RU-Center (ЗАО Региональный Сетевой Информационный Центр)'], 'countries': ['RU']}
+{'count': 1, 'organization': ['Digital Signature Trust Co.'], 'countries': []}
+{'count': 2, 'organization': ['Gehirn Inc.'], 'countries': ['JP']}
+{'count': 2, 'organization': ['certSIGN'], 'countries': ['RO']}
+{'count': 1, 'organization': ['Shenzhen Digital Certificate Authority Center Co., Ltd'], 'countries': ['CN']}
+{'count': 4, 'organization': ['DHIMYOTIS'], 'countries': ['FR']}
+{'count': 3, 'organization': ['Government of Korea'], 'countries': ['KR']}
+{'count': 2, 'organization': ['AC Camerfirma SA CIF A82743287'], 'countries': ['EU']}
+{'count': 1, 'organization': ['admin'], 'countries': ['ch']}
+{'count': 1, 'organization': ['nazwa.pl sp. z o.o.'], 'countries': ['PL']}
+{'count': 1, 'organization': ['WFA Hotspot 2.0'], 'countries': ['US']}
+{'count': 1, 'organization': ['LAWtrust'], 'countries': ['ZA']}
+{'count': 2, 'organization': ['Republika Slovenija'], 'countries': ['SI']}
+{'count': 1, 'organization': ['Netrust Pte Ltd'], 'countries': ['SG']}
+{'count': 8, 'organization': ['The USERTRUST Network'], 'countries': ['US']}
+{'count': 1, 'organization': ['Thawte Consulting cc'], 'countries': ['ZA']}
+{'count': 1, 'organization': ['NISZ Nemzeti Infokommunikációs Szolgáltató Zrt.'], 'countries': ['HU']}
+{'count': 1, 'organization': ['GUANG DONG CERTIFICATE AUTHORITY CO.,LTD.'], 'countries': ['CN']}
+{'count': 2, 'organization': ['T-Systems Enterprise Services GmbH'], 'countries': ['DE']}
+{'count': 3, 'organization': ['Swisscom'], 'countries': ['ch']}
+{'count': 1, 'organization': ['SafeToOpen Ltd'], 'countries': ['NZ']}
+{'count': 1, 'organization': ['Technische Universitaet Dresden'], 'countries': ['DE']}
+{'count': 7, 'organization': ['UniTrust'], 'countries': ['CN']}
+{'count': 3, 'organization': ['CERTDATA SERVICOS DE INFORMACAO LTDA'], 'countries': ['BR']}
+{'count': 4, 'organization': ["Let's Encrypt"], 'countries': ['US']}
+{'count': 81, 'organization': ['DigiCert Inc'], 'countries': ['US']}
+{'count': 7, 'organization': ['Symantec Corporation'], 'countries': ['US']}
+{'count': 1, 'organization': ['Deutsche Kreditbank AG'], 'countries': ['DE']}
+{'count': 1, 'organization': ['WebSpace-Forum e.K.'], 'countries': ['DE']}
+{'count': 3, 'organization': ['MarketWare - Soluções para Mercados Digitais, Lda.'], 'countries': ['PT']}
+{'count': 3, 'organization': ['SecureCore'], 'countries': ['JP']}
+{'count': 1, 'organization': ['Thawte'], 'countries': ['ZA']}
+{'count': 2, 'organization': ['KPN B.V.'], 'countries': ['NL']}
+{'count': 3, 'organization': ['SSL.com'], 'countries': ['US']}
+{'count': 2, 'organization': ['e-commerce monitoring GmbH'], 'countries': ['AT']}
+{'count': 1, 'organization': ['Agencia Catalana de Certificacio (NIF Q-0801176-I)'], 'countries': ['ES']}
+{'count': 5, 'organization': ['thawte, Inc.'], 'countries': ['US']}
+{'count': 1, 'organization': ['home.pl S.A.'], 'countries': ['PL']}
+{'count': 6, 'organization': ['QuoVadis Trustlink B.V.'], 'countries': ['NL']}
+{'count': 3, 'organization': ['DOMENY.PL sp. z o.o'], 'countries': ['PL']}
+{'count': 2, 'organization': ['ATT Services Inc'], 'countries': ['US']}
+{'count': 1, 'organization': ['K Software'], 'countries': ['US']}
+{'count': 2, 'organization': ['AC CAMERFIRMA S.A.'], 'countries': ['ES']}
+{'count': 1, 'organization': ["Agenzia per l'Italia Digitale"], 'countries': ['IT']}
+{'count': 1, 'organization': ['Sonera'], 'countries': ['FI']}
+{'count': 3, 'organization': ['Certinomis'], 'countries': ['FR']}
+{'count': 3, 'organization': ['Shanghai Ping An Credit Reference Company Limited'], 'countries': ['CN']}
+{'count': 6, 'organization': ['Amazon'], 'countries': ['US']}
+{'count': 10, 'organization': ['TrustAsia Technologies, Inc.'], 'countries': ['CN']}
+{'count': 4, 'organization': ['HydrantID (Avalanche Cloud Corporation)'], 'countries': ['US']}
+{'count': 4, 'organization': ['eMudhra Inc'], 'countries': ['US']}
+{'count': 12, 'organization': ['COMODO CA Limited'], 'countries': ['GB']}
+{'count': 2, 'organization': ['Google Trust Services'], 'countries': ['US']}
+{'count': 1, 'organization': ['Sociedad Cameral de Certificación Digital - Certicámara S.A.'], 'countries': ['CO']}
+{'count': 1, 'organization': ['LH.pl Sp. z o.o.'], 'countries': ['PL']}
+{'count': 1, 'organization': ['Carillon Information Security Inc.'], 'countries': ['CA']}
+{'count': 1, 'organization': ['Echoworx Corporation'], 'countries': ['CA']}
+{'count': 2, 'organization': ['National Digital Certification Agency'], 'countries': ['TN']}
+{'count': 2, 'organization': ['TrustSign Certificadora Dig. & Soluções Segurança da Inf. Ltda.'], 'countries': ['BR']}
+{'count': 6, 'organization': ['Japan Registry Services Co., Ltd.'], 'countries': ['JP']}
+{'count': 3, 'organization': ['The Trustico Group Ltd'], 'countries': ['GB']}
+{'count': 3, 'organization': ['Actalis S.p.A.'], 'countries': ['IT']}
+{'count': 34, 'organization': ['GlobalSign nv-sa'], 'countries': ['BE']}
+{'count': 1, 'organization': ['Česká pošta, s.p. [IČ 47114983]'], 'countries': ['CZ']}
+{'count': 1, 'organization': ['BYTE Computer S.A.'], 'countries': ['GR']}
+{'count': 1, 'organization': ['swissns GmbH'], 'countries': ['CH']}
+{'count': 2, 'organization': ['iTrusChina Co., Ltd.'], 'countries': ['CN']}
+{'count': 1, 'organization': ['Anson Network Limited'], 'countries': ['GB']}
+{'count': 10, 'organization': ['AffirmTrust'], 'countries': ['CA', 'US']}
+{'count': 3, 'organization': ['ACCV'], 'countries': ['ES']}
+{'count': 4, 'organization': ['VeriSign, Inc.'], 'countries': ['US']}
+{'count': 2, 'organization': ['National Institute of Informatics'], 'countries': ['JP']}
+{'count': 4, 'organization': ['Internet2'], 'countries': ['US']}
+{'count': 7, 'organization': ['Hongkong Post'], 'countries': ['HK']}
+{'count': 2, 'organization': ['India PKI'], 'countries': ['IN']}
+{'count': 1, 'organization': ['Trustis Limited'], 'countries': ['GB']}
+{'count': 1, 'organization': ['Notarius Inc'], 'countries': ['CA']}
+{'count': 2, 'organization': ['Globe Hosting, Inc.'], 'countries': ['US']}
+{'count': 3, 'organization': ['Disig a.s.'], 'countries': ['SK']}
+{'count': 1, 'organization': ['MINISTERIO DE TRABAJO E INMIGRACION'], 'countries': ['ES']}
+{'count': 2, 'organization': ['Root Networks, LLC'], 'countries': ['US']}
+{'count': 3, 'organization': ['OpenTrust'], 'countries': ['FR']}
+{'count': 4, 'organization': ['U.S. Government'], 'countries': ['US']}
+{'count': 1, 'organization': ['Isimtescil Bilisim Anonim Sirketi'], 'countries': ['TR']}
+{'count': 1, 'organization': ['Electronic Transactions Development Agency (Public Organization)'], 'countries': ['TH']}
+{'count': 4, 'organization': ['TrustOcean Limited'], 'countries': ['US']}
+{'count': 2, 'organization': ['TBS INTERNET'], 'countries': ['FR']}
+{'count': 1, 'organization': ['CONSEJO GENERAL DE LA ABOGACIA'], 'countries': ['ES']}
+{'count': 1, 'organization': ['NetLock Halozatbiztonsagi Kft.'], 'countries': ['HU']}
+{'count': 2, 'organization': ['MULTICERT - Serviços de Certificação Electrónica S.A.'], 'countries': ['PT']}
+{'count': 1, 'organization': ['The Go Daddy Group, Inc.'], 'countries': ['US']}
+{'count': 5, 'organization': ['Staat der Nederlanden'], 'countries': ['NL']}
+{'count': 1, 'organization': ['XRamp Security Services Inc'], 'countries': ['US']}
+{'count': 2, 'organization': ['NAVER BUSINESS PLATFORM Corp.'], 'countries': ['KR']}
+{'count': 2, 'organization': ['Abitab S.A.'], 'countries': ['UY']}
+{'count': 1, 'organization': ['DIRECCION GENERAL DE LA POLICIA'], 'countries': ['ES']}
+{'count': 5, 'organization': ['GEANT Vereniging'], 'countries': ['NL']}
+{'count': 1, 'organization': ['Financijska agencija'], 'countries': ['HR']}
+{'count': 13, 'organization': ['Google Trust Services LLC'], 'countries': ['US']}
+{'count': 1, 'organization': ['Japan Certification Services, Inc.'], 'countries': ['JP']}
+{'count': 2, 'organization': ['BitCert'], 'countries': ['CN']}
+{'count': 2, 'organization': ['TERENA'], 'countries': ['NL']}
+{'count': 7, 'organization': ['Network Solutions L.L.C.'], 'countries': ['US']}
+{'count': 3, 'organization': ['SSL Corp'], 'countries': ['US']}
+{'count': 1, 'organization': ['Apple Computer, Inc.'], 'countries': ['US']}
+{'count': 5, 'organization': ['DigiCert, Inc.'], 'countries': ['US']}
+{'count': 3, 'organization': ['Beijing Xinchacha Credit Management Co., Ltd.'], 'countries': ['CN']}
+{'count': 3, 'organization': ['EUNETIC GmbH'], 'countries': ['DE']}
+{'count': 3, 'organization': ['AddTrust AB'], 'countries': ['SE']}
+{'count': 1, 'organization': ['Deutscher Bundestag'], 'countries': ['DE']}
+{'count': 1, 'organization': ['United SSL Deutschland GmbH'], 'countries': ['DE']}
+{'count': 1, 'organization': ['InfoCert S.p.A.'], 'countries': ['IT']}
+{'count': 1, 'organization': ['KISA'], 'countries': ['KR']}
+{'count': 2, 'organization': ['Open Access Technology International Inc'], 'countries': ['US']}
+{'count': 2, 'organization': ['ZeroSSL'], 'countries': ['AT']}
+{'count': 15, 'organization': ['Entrust, Inc.'], 'countries': ['US']}
+{'count': 1, 'organization': ['CONSORCI ADMINISTRACIO OBERTA DE CATALUNYA'], 'countries': ['ES']}
+{'count': 7, 'organization': ['Hellenic Academic and Research Institutions CA'], 'countries': ['GR']}
+{'count': 1, 'organization': ['Macao Post'], 'countries': ['MO']}
+{'count': 1, 'organization': ['Verizon Business'], 'countries': ['US']}
+{'count': 1, 'organization': ['行政院'], 'countries': ['TW']}
+{'count': 1, 'organization': ['Government of the District of Columbia'], 'countries': ['US']}
+{'count': 1, 'organization': ['Colegio de Registradores de la Propiedad y Mercantiles de España'], 'countries': ['ES']}
+{'count': 1, 'organization': ['ANF Autoridad de Certificacion'], 'countries': ['ES']}
+{'count': 1, 'organization': ['Firmaprofesional S.A.'], 'countries': ['ES']}
+{'count': 1, 'organization': ['Agence Nationale de Certification Electronique'], 'countries': ['TN']}
+{'count': 8, 'organization': ['WoTrus CA Limited'], 'countries': ['CN']}
+{'count': 5, 'organization': ['WISeKey'], 'countries': ['CH']}
+{'count': 6, 'organization': ['NetLock Kft.'], 'countries': ['HU']}
+{'count': 2, 'organization': ['Cybertrust, Inc'], 'countries': []}
+{'count': 2, 'organization': ['Government Root Certification Authority'], 'countries': ['TW']}
+{'count': 6, 'organization': ['GeoTrust Inc.'], 'countries': ['US']}
+{'count': 2, 'organization': ['Digital Trust L.L.C.'], 'countries': ['AE']}
+{'count': 1, 'organization': ['LuxTrust S.A.'], 'countries': ['LU']}
+{'count': 1, 'organization': ['Comodo Japan, Inc.'], 'countries': ['JP']}
+{'count': 2, 'organization': ['One Sign Pte. Ltd.'], 'countries': ['SG']}
+{'count': 5, 'organization': ['eMudhra Technologies Limited'], 'countries': ['IN']}
+{'count': 4, 'organization': ['Nijimo K.K.'], 'countries': ['JP']}
+{'count': 12, 'organization': ['Apple Inc.'], 'countries': ['US']}
+{'count': 1, 'organization': ['ARGE DATEN - Austrian Society for Data Protection'], 'countries': ['AT']}
+{'count': 18, 'organization': ['Microsoft Corporation'], 'countries': ['US']}
+{'count': 1, 'organization': ['Entrust Datacard Europe S.L.'], 'countries': ['ES']}
+{'count': 2, 'organization': ['Rede Nacional de Ensino e Pesquisa - RNP'], 'countries': ['BR']}
+{'count': 3, 'organization': ['Ziwit'], 'countries': ['FR']}
+{'count': 4, 'organization': ['Actalis S.p.A./03358520967'], 'countries': ['IT']}
+{'count': 1, 'organization': ['Wells Fargo & Company'], 'countries': ['US']}
+{'count': 2, 'organization': ['ComSign'], 'countries': ['IL']}
+{'count': 3, 'organization': ['Microsec Ltd.'], 'countries': ['HU']}
+{'count': 1, 'organization': ['ZETES SA (VATBE-0408425626)'], 'countries': ['BE']}
+{'count': 1, 'organization': ['Netrust Certificate Authority 1'], 'countries': ['SG']}
+{'count': 7, 'organization': ['FNMT-RCM'], 'countries': ['ES']}
+{'count': 3, 'organization': ['Internet Security Research Group'], 'countries': ['US']}
+{'count': 3, 'organization': ['cPanel, Inc.'], 'countries': ['US']}
+{'count': 2, 'organization': ['Kingnet Information Technology Co., Ltd.'], 'countries': ['CN']}
+{'count': 3, 'organization': ['Agencia Notarial de Certificacion S.L.U. - CIF B83395988'], 'countries': ['ES']}
+{'count': 2, 'organization': ['Česká pošta, s.p.'], 'countries': ['CZ']}
+{'count': 1, 'organization': ['Aristotle University of Thessaloniki'], 'countries': ['GR']}
+{'count': 1, 'organization': ['Yandex LLC'], 'countries': ['RU']}
+{'count': 1, 'organization': ['Swedish Social Insurance Agency'], 'countries': ['SE']}
+{'count': 1, 'organization': ['Karlsruhe Institute of Technology'], 'countries': ['DE']}
+{'count': 4, 'organization': ['E-Tuğra EBG Bilişim Teknolojileri ve Hizmetleri A.Ş.'], 'countries': ['TR']}
+{'count': 6, 'organization': ['IdenTrust'], 'countries': ['US']}
+{'count': 9, 'organization': ['SSL Corporation'], 'countries': ['US']}
+{'count': 2, 'organization': ['SecureTrust Corporation'], 'countries': ['US']}
+{'count': 2, 'organization': ['Turkiye Bilimsel ve Teknolojik Arastirma Kurumu - TUBITAK'], 'countries': ['TR']}
+{'count': 3, 'organization': ['VISA'], 'countries': ['US']}
+{'count': 7, 'organization': ['D-Trust GmbH'], 'countries': ['DE']}
+{'count': 2, 'organization': ['TI Trust Technologies S.R.L.'], 'countries': ['IT']}
+{'count': 1, 'organization': ['CERTSIGN SA'], 'countries': ['RO']}
+{'count': 1, 'organization': ['WebNIC'], 'countries': ['SG']}
+{'count': 2, 'organization': ['TrustOcean Ltd.'], 'countries': ['US']}
+{'count': 3, 'organization': ['T-Systems International GmbH'], 'countries': ['DE']}
+{'count': 2, 'organization': ['TeliaSonera'], 'countries': ['FI']}
+{'count': 4, 'organization': ['IZENPE S.A.'], 'countries': ['ES']}
+{'count': 1, 'organization': ['CertCloud Pte. Ltd.'], 'countries': ['SG']}
+{'count': 2, 'organization': ['Telia Finland Oyj'], 'countries': ['FI']}
+{'count': 6, 'organization': ['DATEV eG'], 'countries': ['DE']}
+{'count': 1, 'organization': ['Halcom d.d.'], 'countries': ['SI']}
+{'count': 1, 'organization': ['Comodo CA Limited'], 'countries': ['GB']}
+{'count': 1, 'organization': ['Domain The Net Technologies Ltd'], 'countries': ['IL']}
+{'count': 3, 'organization': ['StartCom Ltd.'], 'countries': ['IL']}
+{'count': 2, 'organization': ['Gandi'], 'countries': ['FR']}
+{'count': 2, 'organization': ['Alpiro s.r.o.'], 'countries': ['CZ']}
+{'count': 2, 'organization': ['CentralNic Luxembourg Sàrl'], 'countries': ['LU']}
+{'count': 2, 'organization': ['sslTrus'], 'countries': ['CN']}
+Total Items: 262
+--------------------------------------------------

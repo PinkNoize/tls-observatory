@@ -1,0 +1,87 @@
+------------------- Duplicate Keys ---------------
+fingerprint_sha256: 952c2039c0243eb515dd73d83fc3643184874feb0862a9837731ed9b4742e17a
+	Count: 2
+	Algo: RSA
+	ID: 6089ffd23eaacdd8205f1a98
+		Subject: C=ES, O=IZENPE S.A., CN=Izenpe.com
+		Issuer: C=ES, O=IZENPE S.A., CN=Izenpe.com
+		Valid Roots: ['apple', 'microsoft_windows']
+	ID: 608a020f3eaacdd82064f0e5
+		Subject: C=ES, O=IZENPE S.A., CN=Izenpe.com
+		Issuer: C=ES, O=IZENPE S.A., CN=Izenpe.com
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+
+fingerprint_sha256: 1255cabe8152fa64df942f7a47417e29f96c1ce11bf8c84ecbe2815cc1280810
+	Count: 2
+	Algo: RSA
+	ID: 608a08473eaacdd82074e1b2
+		Subject: C=CN, O=UniTrust, CN=UCA Global G2 Root
+		Issuer: C=PL, O=Unizeto Technologies S.A., OU=Certum Certification Authority, CN=Certum Trusted Network CA
+		Valid Roots: ['oracle_java', 'apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk']
+	ID: 608a79c33eaacdd820747c20
+		Subject: C=CN, O=UniTrust, CN=UCA Global G2 Root
+		Issuer: C=CN, O=UniTrust, CN=UCA Global G2 Root
+		Valid Roots: ['microsoft_windows', 'mozilla_nss']
+
+fingerprint_sha256: f7cd08a27aa9df0918b4df5265580ccee590cc9b5ad677f134fc137a6d57d2e7
+	Count: 2
+	Algo: RSA
+	ID: 6089fe723eaacdd8205b71e2
+		Subject: C=US, O=Entrust, Inc., OU=See www.entrust.net/legal-terms, OU=(c) 2012 Entrust, Inc. - for authorized use only, CN=Entrust Certification Authority - L1K
+		Issuer: C=US, O=Entrust, Inc., OU=See www.entrust.net/legal-terms, OU=(c) 2009 Entrust, Inc. - for authorized use only, CN=Entrust Root Certification Authority - G2
+		Valid Roots: ['openjdk', 'oracle_java', 'apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+	ID: 6089fe723eaacdd8205b7393
+		Subject: C=US, O=Entrust, Inc., OU=See www.entrust.net/legal-terms, OU=(c) 2012 Entrust, Inc. - for authorized use only, CN=Entrust Certification Authority - L1K
+		Issuer: C=US, O=Entrust, Inc., OU=See www.entrust.net/legal-terms, OU=(c) 2009 Entrust, Inc. - for authorized use only, CN=Entrust Root Certification Authority - G2
+		Valid Roots: ['openjdk', 'oracle_java', 'apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+
+fingerprint_sha256: c444b5b66ce5d71e1b5e40f27385c95cbfd24a05b56f70cac0992f0f50c3379c
+	Count: 2
+	Algo: RSA
+	ID: 6089fe7b3eaacdd8205b8dc9
+		Subject: C=TW, O=TAIWAN-CA, OU=Root CA, CN=TWCA Global Root CA
+		Issuer: C=TW, O=TAIWAN-CA, OU=Root CA, CN=TWCA Root Certification Authority
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+	ID: 6089fe833eaacdd8205ba2a3
+		Subject: C=TW, O=TAIWAN-CA, OU=Root CA, CN=TWCA Global Root CA
+		Issuer: C=TW, O=TAIWAN-CA, OU=Root CA, CN=TWCA Global Root CA
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+
+fingerprint_sha256: 706bb1017c855c59169bad5c1781cf597f12d2cad2f63d1a4aa37493800ffb80
+	Count: 2
+	Algo: RSA
+	ID: 6089fe723eaacdd8205b7258
+		Subject: OU=GlobalSign Root CA - R3, O=GlobalSign, CN=GlobalSign
+		Issuer: OU=GlobalSign Root CA - R3, O=GlobalSign, CN=GlobalSign
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java']
+	ID: 6089fe733eaacdd8205b756f
+		Subject: OU=GlobalSign Root CA - R3, O=GlobalSign, CN=GlobalSign
+		Issuer: C=BE, O=GlobalSign nv-sa, OU=Root CA, CN=GlobalSign Root CA
+		Valid Roots: ['microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java', 'apple', 'google_aosp']
+
+fingerprint_sha256: e42f24bd4d37f4aa2e56b979d83d1e65219fe0e9e3a382a1b3cb66c93955de75
+	Count: 2
+	Algo: RSA
+	ID: 6089fe7b3eaacdd8205b8d49
+		Subject: C=IL, O=StartCom Ltd., OU=Secure Digital Certificate Signing, CN=StartCom Certification Authority
+		Issuer: C=IL, O=StartCom Ltd., OU=Secure Digital Certificate Signing, CN=StartCom Certification Authority
+		Valid Roots: ['apple']
+	ID: 608a03c63eaacdd820695e71
+		Subject: C=IL, O=StartCom Ltd., OU=Secure Digital Certificate Signing, CN=StartCom Certification Authority
+		Issuer: C=IL, O=StartCom Ltd., OU=Secure Digital Certificate Signing, CN=StartCom Certification Authority
+		Valid Roots: ['apple']
+
+fingerprint_sha256: eb4993efa9b089e593418aa893f8e93a7374d810e52fcbe01e7f1d7e92a6d024
+	Count: 2
+	Algo: RSA
+	ID: 609075b64f64737e96a368ed
+		Subject: C=US, O=Apple Computer, Inc., OU=Apple Computer Certificate Authority, CN=Apple Root Certificate Authority
+		Issuer: C=US, O=Apple Computer, Inc., OU=Apple Computer Certificate Authority, CN=Apple Root Certificate Authority
+		Valid Roots: ['apple']
+	ID: 6089fedd3eaacdd8205c91a9
+		Subject: C=US, O=Apple Inc., OU=Apple Certification Authority, CN=Apple Root CA
+		Issuer: C=US, O=Apple Inc., OU=Apple Certification Authority, CN=Apple Root CA
+		Valid Roots: ['apple']
+
+Total Items: 7
+--------------------------------------------------

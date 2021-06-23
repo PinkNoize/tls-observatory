@@ -1,0 +1,35 @@
+----------------- Root CA Key Types --------------
+{'count': 40, 'key_algorithm': 'ECDSA'}
+{'count': 261, 'key_algorithm': 'RSA'}
+Total Items: 2
+--------------------------------------------------
+--------------- Root CA RSA Key Sizes ------------
+{'count': 1, 'bitlength': 3072}
+{'count': 135, 'bitlength': 4096}
+{'count': 5, 'bitlength': 1024}
+{'count': 120, 'bitlength': 2048}
+Total Items: 4
+--------------------------------------------------
+--------------------- Key Types ------------------
+{'count': 59, 'key_algorithm': 'ECDSA'}
+{'count': 2380, 'key_algorithm': 'RSA'}
+Total Items: 2
+--------------------------------------------------
+------------------- RSA Key Sizes ----------------
+{'count': 4, 'bitlength': 3072}
+{'count': 229, 'bitlength': 4096}
+{'count': 2, 'bitlength': 8192}
+{'count': 5, 'bitlength': 1024}
+{'count': 2140, 'bitlength': 2048}
+Total Items: 5
+--------------------------------------------------
+----------- CA Certificate Key Signatures --------
+{'count': 11, 'signature_algorithm': 'SHA512-RSA'}
+{'count': 36, 'signature_algorithm': 'ECDSA-SHA384'}
+{'count': 46, 'signature_algorithm': 'SHA384-RSA'}
+{'count': 7, 'signature_algorithm': 'ECDSA-SHA256'}
+{'count': 1, 'signature_algorithm': 'ECDSA-SHA512'}
+{'count': 102, 'signature_algorithm': 'SHA1-RSA'}
+{'count': 179, 'signature_algorithm': 'SHA256-RSA'}
+Total Items: 7
+--------------------------------------------------

@@ -1,0 +1,564 @@
+------------------- Duplicate Keys ---------------
+fingerprint_sha256: b489ccb224b9a6b81dd274ceaf5209c252998c9a76af48e4f4c50a0728461825
+	Count: 3
+	Algo: RSA
+	ID: 6089feab3eaacdd8205c0d10
+		Subject: C=TW, O=Chunghwa Telecom Co., Ltd., CN=ePKI Root Certification Authority - G2
+		Issuer: C=TW, O=Chunghwa Telecom Co., Ltd., OU=ePKI Root Certification Authority
+		Validity: 2015-11-17T08:51:35Z - 2034-12-20T02:31:27Z
+		Valid Roots: ['mozilla_nss', 'openjdk', 'oracle_java', 'apple', 'google_aosp', 'microsoft_windows']
+	ID: 6089feda3eaacdd8205c88cb
+		Subject: C=TW, O=Chunghwa Telecom Co., Ltd., CN=ePKI Root Certification Authority - G2
+		Issuer: C=TW, O=Chunghwa Telecom Co., Ltd., OU=ePKI Root Certification Authority
+		Validity: 2015-11-17T08:51:35Z - 2034-12-20T02:31:27Z
+		Valid Roots: ['openjdk', 'oracle_java', 'apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+	ID: 608a00363eaacdd820601f32
+		Subject: C=TW, O=Chunghwa Telecom Co., Ltd., CN=ePKI Root Certification Authority - G2
+		Issuer: C=TW, O=Chunghwa Telecom Co., Ltd., CN=ePKI Root Certification Authority - G2
+		Validity: 2015-11-17T08:23:42Z - 2037-12-31T15:59:59Z
+		Valid Roots: ['microsoft_windows']
+
+fingerprint_sha256: 62554c17005543b237215f04268dcd2fd1c470240ad3c8660e25ae2c59630f55
+	Count: 2
+	Algo: RSA
+	ID: 6089fee73eaacdd8205cab96
+		Subject: C=TW, O=Chunghwa Telecom Co., Ltd., OU=ePKI Root Certification Authority
+		Issuer: C=TW, O=Chunghwa Telecom Co., Ltd., CN=ePKI Root Certification Authority - G2
+		Validity: 2015-11-17T08:31:41Z - 2034-12-20T02:31:27Z
+		Valid Roots: ['microsoft_windows']
+	ID: 608a0f1b3eaacdd8208616ca
+		Subject: C=TW, O=Chunghwa Telecom Co., Ltd., OU=ePKI Root Certification Authority
+		Issuer: C=TW, O=Chunghwa Telecom Co., Ltd., CN=ePKI Root Certification Authority - G2
+		Validity: 2015-11-17T08:31:41Z - 2034-12-20T02:31:27Z
+		Valid Roots: ['microsoft_windows']
+
+fingerprint_sha256: 2fc5667a4b9a2678ed6ac6ad25465fcbf6094bfcd9504097c7a8fa47ade5e888
+	Count: 2
+	Algo: RSA
+	ID: 6089ffce3eaacdd8205f0fc8
+		Subject: C=ES, O=FNMT-RCM, OU=AC RAIZ FNMT-RCM
+		Issuer: C=ES, O=FNMT-RCM, OU=AC RAIZ FNMT-RCM
+		Validity: 2008-10-29T15:59:56Z - 2030-01-01T00:00:00Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+	ID: 608a02133eaacdd82064fb97
+		Subject: C=ES, O=FNMT-RCM, OU=AC RAIZ FNMT-RCM
+		Issuer: C=ES, O=FNMT-RCM, OU=AC RAIZ FNMT-RCM
+		Validity: 2008-10-29T15:59:55Z - 2030-01-01T00:00:00Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+
+fingerprint_sha256: d943d4383990c4c66cbc522c2bb26074548f63e919fea28ffbb6973e1d7f6f1f
+	Count: 2
+	Algo: RSA
+	ID: 608a09dc3eaacdd82078e5ab
+		Subject: C=BR, O=VALID CERTIFICADORA DIGITAL, CN=Valid Certificadora Digital SSL DV CA 2018
+		Issuer: C=BE, O=GlobalSign nv-sa, CN=Trusted Root TLS CA SHA256 G3
+		Validity: 2020-07-05T00:00:00Z - 2023-09-19T00:00:00Z
+		Valid Roots: ['microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java', 'apple', 'google_aosp']
+	ID: 608a45cb3eaacdd8200532b7
+		Subject: C=BR, ST=SÃO PAULO, L=SÃO PAULO, OU=VALID SSL DV, O=VALID CERTIFICADORA DIGITAL, CN=Valid Certificadora Digital SSL DV CA 2018
+		Issuer: C=BE, OU=Trusted Root, O=GlobalSign nv-sa, CN=Trusted Root CA SHA256 G2
+		Validity: 2018-09-19T00:00:00Z - 2023-09-19T00:00:00Z
+		Valid Roots: ['oracle_java', 'apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk']
+
+fingerprint_sha256: 8bb593a93be1d0e8a822bb887c547890c3e706aad2dab76254f97fb36b82fc26
+	Count: 2
+	Algo: RSA
+	ID: 6089fe723eaacdd8205b7169
+		Subject: C=US, O=DigiCert Inc, OU=www.digicert.com, CN=DigiCert Global Root G2
+		Issuer: C=US, O=VeriSign, Inc., OU=VeriSign Trust Network, OU=(c) 2006 VeriSign, Inc. - For authorized use only, CN=VeriSign Class 3 Public Primary Certification Authority - G5
+		Validity: 2017-11-06T00:00:00Z - 2022-11-05T23:59:59Z
+		Valid Roots: ['openjdk', 'oracle_java', 'apple', 'google_aosp', 'microsoft_windows']
+	ID: 6089ff0e3eaacdd8205d1422
+		Subject: C=US, O=DigiCert Inc, OU=www.digicert.com, CN=DigiCert Global Root G2
+		Issuer: C=US, O=VeriSign, Inc., OU=VeriSign Trust Network, OU=(c) 2006 VeriSign, Inc. - For authorized use only, CN=VeriSign Class 3 Public Primary Certification Authority - G5
+		Validity: 2018-04-03T00:00:00Z - 2028-04-02T23:59:59Z
+		Valid Roots: ['microsoft_windows', 'openjdk', 'oracle_java', 'apple', 'google_aosp']
+
+fingerprint_sha256: fbe3018031f9586bcbf41727e417b7d1c45c2f47f93be372a17b96b50757d5a2
+	Count: 2
+	Algo: RSA
+	ID: 6089fe723eaacdd8205b70a9
+		Subject: C=US, O=Amazon, CN=Amazon Root CA 1
+		Issuer: C=US, ST=Arizona, L=Scottsdale, O=Starfield Technologies, Inc., CN=Starfield Services Root Certificate Authority - G2
+		Validity: 2015-05-25T12:00:00Z - 2037-12-31T01:00:00Z
+		Valid Roots: ['openjdk', 'oracle_java', 'apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+	ID: 608a18093eaacdd8209c4f8a
+		Subject: C=US, O=Amazon, CN=Amazon Root CA 1
+		Issuer: C=US, O=Amazon, CN=Amazon Root CA 1
+		Validity: 2015-05-26T00:00:00Z - 2038-01-17T00:00:00Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java']
+
+fingerprint_sha256: 5a889647220e54d6bd8a16817224520bb5c78e58984bd570506388b9de0f075f
+	Count: 2
+	Algo: RSA
+	ID: 6089fe723eaacdd8205b7202
+		Subject: C=US, O=DigiCert Inc, OU=www.digicert.com, CN=DigiCert High Assurance EV Root CA
+		Issuer: C=US, O=DigiCert Inc, OU=www.digicert.com, CN=DigiCert High Assurance EV Root CA
+		Validity: 2006-11-10T00:00:00Z - 2031-11-10T00:00:00Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java']
+	ID: 6089fe753eaacdd8205b7955
+		Subject: C=US, O=DigiCert Inc, OU=www.digicert.com, CN=DigiCert High Assurance EV Root CA
+		Issuer: C=IE, O=Baltimore, OU=CyberTrust, CN=Baltimore CyberTrust Root
+		Validity: 2016-12-07T12:16:32Z - 2025-05-10T12:00:00Z
+		Valid Roots: ['openjdk', 'oracle_java', 'apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+
+fingerprint_sha256: 4b44b27cc25f7cc339499471f0a6e81fcda76b129ef9794596d47f82edea4b38
+	Count: 2
+	Algo: RSA
+	ID: 608a003c3eaacdd820603220
+		Subject: C=BM, O=QuoVadis Limited, CN=QuoVadis EV SSL ICA G3
+		Issuer: C=BM, O=QuoVadis Limited, CN=QuoVadis Root CA 2 G3
+		Validity: 2016-11-30T16:21:01Z - 2026-11-30T16:21:01Z
+		Valid Roots: ['mozilla_nss', 'openjdk', 'oracle_java', 'apple', 'google_aosp', 'microsoft_windows']
+	ID: 608a163f3eaacdd82097e5c5
+		Subject: C=BM, O=QuoVadis Limited, CN=QuoVadis EV SSL ICA G3
+		Issuer: C=BM, O=QuoVadis Limited, CN=QuoVadis Root CA 2 G3
+		Validity: 2020-07-06T18:03:08Z - 2026-11-30T16:21:01Z
+		Valid Roots: ['openjdk', 'oracle_java', 'apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+
+fingerprint_sha256: 1255cabe8152fa64df942f7a47417e29f96c1ce11bf8c84ecbe2815cc1280810
+	Count: 2
+	Algo: RSA
+	ID: 608a08473eaacdd82074e1b2
+		Subject: C=CN, O=UniTrust, CN=UCA Global G2 Root
+		Issuer: C=PL, O=Unizeto Technologies S.A., OU=Certum Certification Authority, CN=Certum Trusted Network CA
+		Validity: 2020-02-21T09:15:50Z - 2025-02-21T09:15:50Z
+		Valid Roots: ['oracle_java', 'apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk']
+	ID: 608a79c33eaacdd820747c20
+		Subject: C=CN, O=UniTrust, CN=UCA Global G2 Root
+		Issuer: C=CN, O=UniTrust, CN=UCA Global G2 Root
+		Validity: 2016-03-11T00:00:00Z - 2040-12-31T00:00:00Z
+		Valid Roots: ['microsoft_windows', 'mozilla_nss']
+
+fingerprint_sha256: e8fb011f657abf153fc3a0e74b2638129a9061e17c42b620a2163e7d631f8661
+	Count: 2
+	Algo: RSA
+	ID: 6089fedb3eaacdd8205c8d65
+		Subject: C=FR, O=DHIMYOTIS, OU=0002 48146308100036, organizationIdentifier=NTRFR-48146308100036, CN=Certigna Wild CA
+		Issuer: C=FR, O=Dhimyotis, CN=Certigna
+		Validity: 2015-11-25T11:06:35Z - 2025-11-22T11:06:35Z
+		Valid Roots: ['google_aosp', 'microsoft_windows', 'mozilla_nss', 'apple']
+	ID: 608a46493eaacdd8200649f8
+		Subject: C=FR, O=DHIMYOTIS, OU=0002 48146308100036, organizationIdentifier=NTRFR-48146308100036, CN=Certigna Wild CA
+		Issuer: C=FR, O=Dhimyotis, OU=0002 48146308100036, CN=Certigna Root CA
+		Validity: 2015-11-25T11:10:00Z - 2033-06-03T11:10:00Z
+		Valid Roots: ['microsoft_windows', 'mozilla_nss']
+
+fingerprint_sha256: f7cd08a27aa9df0918b4df5265580ccee590cc9b5ad677f134fc137a6d57d2e7
+	Count: 2
+	Algo: RSA
+	ID: 6089fe723eaacdd8205b7163
+		Subject: C=US, O=Entrust, Inc., OU=See www.entrust.net/legal-terms, OU=(c) 2012 Entrust, Inc. - for authorized use only, CN=Entrust Certification Authority - L1K
+		Issuer: C=US, O=Entrust, Inc., OU=See www.entrust.net/legal-terms, OU=(c) 2009 Entrust, Inc. - for authorized use only, CN=Entrust Root Certification Authority - G2
+		Validity: 2015-10-05T19:13:56Z - 2030-12-05T19:43:56Z
+		Valid Roots: ['microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java', 'apple', 'google_aosp']
+	ID: 6089fe783eaacdd8205b851e
+		Subject: C=US, O=Entrust, Inc., OU=See www.entrust.net/legal-terms, OU=(c) 2012 Entrust, Inc. - for authorized use only, CN=Entrust Certification Authority - L1K
+		Issuer: O=Entrust.net, OU=www.entrust.net/CPS_2048 incorp. by ref. (limits liab.), OU=(c) 1999 Entrust.net Limited, CN=Entrust.net Certification Authority (2048)
+		Validity: 2014-10-10T15:23:17Z - 2024-10-11T06:22:47Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java']
+
+fingerprint_sha256: 392aa721122125018a12d73b69b64ca52e18ddd8e1dfda29cea2365aa95856a3
+	Count: 2
+	Algo: RSA
+	ID: 6089fe783eaacdd8205b822d
+		Subject: C=US, ST=Illinois, L=Chicago, O=Trustwave Holdings, Inc., CN=Trustwave Organization Validation SHA256 CA, Level 1, emailAddress=ca@trustwave.com
+		Issuer: C=US, O=SecureTrust Corporation, CN=SecureTrust CA
+		Validity: 2014-10-01T19:22:36Z - 2024-09-28T19:22:36Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java']
+	ID: 6089fe873eaacdd8205bab8a
+		Subject: C=US, ST=Illinois, L=Chicago, O=Trustwave Holdings, Inc., CN=Trustwave Organization Validation SHA256 CA, Level 1, emailAddress=ca@trustwave.com
+		Issuer: C=US, O=SecureTrust Corporation, CN=SecureTrust CA
+		Validity: 2016-09-01T14:35:35Z - 2024-09-29T14:35:35Z
+		Valid Roots: ['openjdk', 'oracle_java', 'apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+
+fingerprint_sha256: aa2630a7b617b04d0a294bab7a8caaa5016e6dbe604837a83a85719fab667eb5
+	Count: 2
+	Algo: RSA
+	ID: 6089fe723eaacdd8205b725e
+		Subject: C=PL, O=Unizeto Technologies S.A., OU=Certum Certification Authority, CN=Certum Trusted Network CA
+		Issuer: C=PL, O=Unizeto Technologies S.A., OU=Certum Certification Authority, CN=Certum Trusted Network CA
+		Validity: 2008-10-22T12:07:37Z - 2029-12-31T12:07:37Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java']
+	ID: 608a00173eaacdd8205fcdc8
+		Subject: C=PL, O=Unizeto Technologies S.A., OU=Certum Certification Authority, CN=Certum Trusted Network CA
+		Issuer: C=PL, O=Unizeto Sp. z o.o., CN=Certum CA
+		Validity: 2008-10-22T12:07:37Z - 2025-12-30T23:59:59Z
+		Valid Roots: ['oracle_java', 'apple', 'microsoft_windows', 'openjdk']
+
+fingerprint_sha256: de673fd760b6a70bed5792637dcc4b99b6d661049b8fdcaa4962d729f65c314c
+	Count: 2
+	Algo: RSA
+	ID: 6089fea53eaacdd8205bfe39
+		Subject: C=US, O=DigiCert Inc, OU=www.digicert.com, CN=Secure Site CA
+		Issuer: C=US, O=DigiCert Inc, OU=www.digicert.com, CN=DigiCert Global Root CA
+		Validity: 2018-05-17T12:30:13Z - 2030-05-17T12:30:13Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java']
+	ID: 6089fe753eaacdd8205b7cd2
+		Subject: C=US, O=DigiCert Inc, OU=www.digicert.com, CN=Secure Site CA G2
+		Issuer: C=US, O=DigiCert Inc, OU=www.digicert.com, CN=DigiCert Global Root CA
+		Validity: 2019-06-20T12:21:35Z - 2029-06-20T12:21:35Z
+		Valid Roots: ['microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java', 'apple', 'google_aosp']
+
+fingerprint_sha256: eb4993efa9b089e593418aa893f8e93a7374d810e52fcbe01e7f1d7e92a6d024
+	Count: 2
+	Algo: RSA
+	ID: 609075b64f64737e96a368ed
+		Subject: C=US, O=Apple Computer, Inc., OU=Apple Computer Certificate Authority, CN=Apple Root Certificate Authority
+		Issuer: C=US, O=Apple Computer, Inc., OU=Apple Computer Certificate Authority, CN=Apple Root Certificate Authority
+		Validity: 2005-02-10T00:18:14Z - 2025-02-10T00:18:14Z
+		Valid Roots: ['apple']
+	ID: 6089fedd3eaacdd8205c91a9
+		Subject: C=US, O=Apple Inc., OU=Apple Certification Authority, CN=Apple Root CA
+		Issuer: C=US, O=Apple Inc., OU=Apple Certification Authority, CN=Apple Root CA
+		Validity: 2006-04-25T21:40:36Z - 2035-02-09T21:40:36Z
+		Valid Roots: ['apple']
+
+fingerprint_sha256: 07e854f26a7cbd389927aa041bfef1b6cd21dd143818ad947dc655a9e587fe88
+	Count: 2
+	Algo: RSA
+	ID: 6089fe963eaacdd8205bd182
+		Subject: C=US, O=IdenTrust, CN=IdenTrust Commercial Root CA 1
+		Issuer: C=US, O=IdenTrust, CN=IdenTrust Commercial Root CA 1
+		Validity: 2014-01-16T18:12:23Z - 2034-01-16T18:12:23Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java']
+	ID: 608a00913eaacdd820610f2f
+		Subject: C=US, O=IdenTrust, CN=IdenTrust Commercial Root CA 1
+		Issuer: O=Digital Signature Trust Co., CN=DST Root CA X3
+		Validity: 2014-09-25T16:28:03Z - 2021-09-29T16:28:03Z
+		Valid Roots: ['oracle_java', 'apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk']
+
+fingerprint_sha256: f7cd08a27aa9df0918b4df5265580ccee590cc9b5ad677f134fc137a6d57d2e7
+	Count: 2
+	Algo: RSA
+	ID: 6089fe723eaacdd8205b71e2
+		Subject: C=US, O=Entrust, Inc., OU=See www.entrust.net/legal-terms, OU=(c) 2012 Entrust, Inc. - for authorized use only, CN=Entrust Certification Authority - L1K
+		Issuer: C=US, O=Entrust, Inc., OU=See www.entrust.net/legal-terms, OU=(c) 2009 Entrust, Inc. - for authorized use only, CN=Entrust Root Certification Authority - G2
+		Validity: 2014-08-26T17:14:49Z - 2024-08-27T08:34:47Z
+		Valid Roots: ['openjdk', 'oracle_java', 'apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+	ID: 6089fe723eaacdd8205b7393
+		Subject: C=US, O=Entrust, Inc., OU=See www.entrust.net/legal-terms, OU=(c) 2012 Entrust, Inc. - for authorized use only, CN=Entrust Certification Authority - L1K
+		Issuer: C=US, O=Entrust, Inc., OU=See www.entrust.net/legal-terms, OU=(c) 2009 Entrust, Inc. - for authorized use only, CN=Entrust Root Certification Authority - G2
+		Validity: 2014-10-22T17:05:14Z - 2024-10-23T07:33:22Z
+		Valid Roots: ['openjdk', 'oracle_java', 'apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+
+fingerprint_sha256: 808d68b3fab4884a5f971ace7d10550d7a95a163774f3ec36afffb213fbe4c74
+	Count: 2
+	Algo: RSA
+	ID: 6089fe753eaacdd8205b7b38
+		Subject: C=US, ST=Arizona, L=Scottsdale, O=Starfield Technologies, Inc., CN=Starfield Root Certificate Authority - G2
+		Issuer: C=US, O=Starfield Technologies, Inc., OU=Starfield Class 2 Certification Authority
+		Validity: 2014-01-01T07:00:00Z - 2031-05-30T07:00:00Z
+		Valid Roots: ['google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java', 'apple']
+	ID: 6089fe7b3eaacdd8205b8ab2
+		Subject: C=US, ST=Arizona, L=Scottsdale, O=Starfield Technologies, Inc., CN=Starfield Root Certificate Authority - G2
+		Issuer: C=US, ST=Arizona, L=Scottsdale, O=Starfield Technologies, Inc., CN=Starfield Root Certificate Authority - G2
+		Validity: 2009-09-01T00:00:00Z - 2037-12-31T23:59:59Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java']
+
+fingerprint_sha256: 5c7dd687916e1fd65e65c09d2d933455bb32420dda785575c2e8ef34460d450f
+	Count: 2
+	Algo: RSA
+	ID: 608a03243eaacdd82067bdf4
+		Subject: CN=ACCVCA-120, OU=PKIACCV, O=ACCV, C=ES
+		Issuer: CN=ACCVRAIZ1, OU=PKIACCV, O=ACCV, C=ES
+		Validity: 2011-10-13T14:55:04Z - 2026-12-31T23:59:00Z
+		Valid Roots: ['google_aosp', 'microsoft_windows', 'mozilla_nss']
+	ID: 608a05f83eaacdd8206f0001
+		Subject: CN=ACCVCA-120, OU=PKIACCV, O=ACCV, C=ES
+		Issuer: CN=ACCVRAIZ1, OU=PKIACCV, O=ACCV, C=ES
+		Validity: 2015-01-27T14:06:42Z - 2026-12-31T23:59:00Z
+		Valid Roots: ['google_aosp', 'microsoft_windows', 'mozilla_nss']
+
+fingerprint_sha256: c444b5b66ce5d71e1b5e40f27385c95cbfd24a05b56f70cac0992f0f50c3379c
+	Count: 2
+	Algo: RSA
+	ID: 6089fe7b3eaacdd8205b8dc9
+		Subject: C=TW, O=TAIWAN-CA, OU=Root CA, CN=TWCA Global Root CA
+		Issuer: C=TW, O=TAIWAN-CA, OU=Root CA, CN=TWCA Root Certification Authority
+		Validity: 2014-10-28T07:38:31Z - 2030-10-28T15:59:59Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+	ID: 6089fe833eaacdd8205ba2a3
+		Subject: C=TW, O=TAIWAN-CA, OU=Root CA, CN=TWCA Global Root CA
+		Issuer: C=TW, O=TAIWAN-CA, OU=Root CA, CN=TWCA Global Root CA
+		Validity: 2012-06-27T06:28:33Z - 2030-12-31T15:59:59Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+
+fingerprint_sha256: f95649c4782b38e895c94c603116dfa28f86216acc29de1a7a5941047b4170a8
+	Count: 2
+	Algo: RSA
+	ID: 6089fe753eaacdd8205b7d6a
+		Subject: C=BE, O=GlobalSign nv-sa, CN=GlobalSign CloudSSL CA - SHA256 - G3
+		Issuer: C=BE, O=GlobalSign nv-sa, OU=Root CA, CN=GlobalSign Root CA
+		Validity: 2015-08-19T00:00:00Z - 2025-08-19T00:00:00Z
+		Valid Roots: ['google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java', 'apple']
+	ID: 6089ff163eaacdd8205d2902
+		Subject: C=BE, O=GlobalSign nv-sa, CN=GlobalSign CloudSSL CA - SHA256 - G3
+		Issuer: OU=GlobalSign Root CA - R3, O=GlobalSign, CN=GlobalSign
+		Validity: 2016-10-14T00:00:00Z - 2025-08-19T00:00:00Z
+		Valid Roots: ['openjdk', 'oracle_java', 'apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+
+fingerprint_sha256: ba829412ec243ed0f0ff8c5cbc69305d55ecfbc5fd8844b38cc465d7c483195d
+	Count: 2
+	Algo: RSA
+	ID: 608a00a13eaacdd820613927
+		Subject: C=ES, O=FNMT-RCM, OU=CERES, serialNumber=Q2826004J, CN=AC Administración Pública
+		Issuer: C=ES, O=FNMT-RCM, OU=AC RAIZ FNMT-RCM
+		Validity: 2010-05-21T09:26:24Z - 2022-05-21T09:57:08Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+	ID: 608a58e23eaacdd8202dd936
+		Subject: C=ES, O=FNMT-RCM, OU=CERES, serialNumber=Q2826004J, CN=AC Administración Pública
+		Issuer: C=ES, O=FNMT-RCM, OU=AC RAIZ FNMT-RCM
+		Validity: 2010-05-21T09:26:24Z - 2022-05-21T09:52:26Z
+		Valid Roots: ['microsoft_windows', 'mozilla_nss', 'apple', 'google_aosp']
+
+fingerprint_sha256: 7e8782c150ce3952f802e636023a5d3e95bb5d68e33e85adb2ba178125cebf15
+	Count: 2
+	Algo: RSA
+	ID: 608a013b3eaacdd82062cbb8
+		Subject: O=Cybertrust, Inc, CN=Cybertrust Global Root
+		Issuer: C=IE, O=Baltimore, OU=CyberTrust, CN=Baltimore CyberTrust Root
+		Validity: 2014-12-03T19:40:23Z - 2024-12-03T19:39:16Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java']
+	ID: 608a89c33eaacdd82096d073
+		Subject: O=Cybertrust, Inc, CN=Cybertrust Global Root
+		Issuer: O=Cybertrust, Inc, CN=Cybertrust Global Root
+		Validity: 2006-12-15T08:00:00Z - 2021-12-15T08:00:00Z
+		Valid Roots: ['google_aosp', 'microsoft_windows', 'mozilla_nss']
+
+fingerprint_sha256: 50cc86ba96db3263c79a43ead07553d9f56659e6907e72d8c026637a1cdc85dc
+	Count: 2
+	Algo: RSA
+	ID: 6089ffc33eaacdd8205ef1a6
+		Subject: C=GR, L=Athens, O=Hellenic Academic and Research Institutions Cert. Authority, CN=Hellenic Academic and Research Institutions RootCA 2015
+		Issuer: C=GR, L=Athens, O=Hellenic Academic and Research Institutions Cert. Authority, CN=Hellenic Academic and Research Institutions RootCA 2015
+		Validity: 2015-07-07T10:11:21Z - 2040-06-30T10:11:21Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk']
+	ID: 6089ffc33eaacdd8205ef1a8
+		Subject: C=GR, L=Athens, O=Hellenic Academic and Research Institutions Cert. Authority, CN=Hellenic Academic and Research Institutions RootCA 2015
+		Issuer: C=GR, O=Hellenic Academic and Research Institutions Cert. Authority, CN=Hellenic Academic and Research Institutions RootCA 2011
+		Validity: 2016-07-19T10:30:46Z - 2024-07-17T10:30:46Z
+		Valid Roots: ['microsoft_windows', 'mozilla_nss', 'apple', 'google_aosp']
+
+fingerprint_sha256: 8d02536c887482bc34ff54e41d2ba659bf85b341a0a20afadb5813dcfbcf286d
+	Count: 3
+	Algo: RSA
+	ID: 6089fe723eaacdd8205b7094
+		Subject: C=US, O=Let's Encrypt, CN=R3
+		Issuer: O=Digital Signature Trust Co., CN=DST Root CA X3
+		Validity: 2020-10-07T19:21:40Z - 2021-09-29T19:21:40Z
+		Valid Roots: ['oracle_java', 'apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk']
+	ID: 6089fe723eaacdd8205b73c7
+		Subject: C=US, O=Let's Encrypt, CN=R3
+		Issuer: C=US, O=Internet Security Research Group, CN=ISRG Root X1
+		Validity: 2020-09-04T00:00:00Z - 2025-09-15T16:00:00Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java']
+	ID: 608a05053eaacdd8206c918e
+		Subject: C=US, O=Let's Encrypt, CN=R3
+		Issuer: O=Digital Signature Trust Co., CN=DST Root CA X3
+		Validity: 2020-09-30T19:52:04Z - 2021-09-29T19:52:04Z
+		Valid Roots: ['google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java', 'apple']
+
+fingerprint_sha256: b6716aaecb5a7b111ae99cfe095186a33848f0817515a7cceaecd7df3cc7ad42
+	Count: 2
+	Algo: RSA
+	ID: 6089fee73eaacdd8205cab95
+		Subject: C=TW, O=Chunghwa Telecom Co., Ltd., OU=Public Certification Authority - G2
+		Issuer: C=TW, O=Chunghwa Telecom Co., Ltd., OU=ePKI Root Certification Authority
+		Validity: 2014-12-11T08:51:59Z - 2034-12-11T08:51:59Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java']
+	ID: 608a090d3eaacdd82076d6c9
+		Subject: C=TW, O=Chunghwa Telecom Co., Ltd., OU=Public Certification Authority - G2
+		Issuer: C=TW, O=Chunghwa Telecom Co., Ltd., CN=ePKI Root Certification Authority - G2
+		Validity: 2014-12-11T08:51:59Z - 2034-12-11T08:51:59Z
+		Valid Roots: ['openjdk', 'oracle_java', 'apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+
+fingerprint_sha256: 25b41b506e4930952823a6eb9f1d31def645ea38a5c6c6a96d71957e384df058
+	Count: 2
+	Algo: RSA
+	ID: 6089fe753eaacdd8205b7b11
+		Subject: C=US, O=VeriSign, Inc., OU=VeriSign Trust Network, OU=(c) 2006 VeriSign, Inc. - For authorized use only, CN=VeriSign Class 3 Public Primary Certification Authority - G5
+		Issuer: C=US, O=VeriSign, Inc., OU=VeriSign Trust Network, OU=(c) 2006 VeriSign, Inc. - For authorized use only, CN=VeriSign Class 3 Public Primary Certification Authority - G5
+		Validity: 2006-11-08T00:00:00Z - 2036-07-16T23:59:59Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'openjdk', 'oracle_java']
+	ID: 6089fe903eaacdd8205bc182
+		Subject: C=US, O=VeriSign, Inc., OU=VeriSign Trust Network, OU=(c) 2006 VeriSign, Inc. - For authorized use only, CN=VeriSign Class 3 Public Primary Certification Authority - G5
+		Issuer: C=US, O=VeriSign, Inc., OU=Class 3 Public Primary Certification Authority
+		Validity: 2006-11-08T00:00:00Z - 2021-11-07T23:59:59Z
+		Valid Roots: ['oracle_java']
+
+fingerprint_sha256: eb53170f6634781689b570ed48fd705b92c875a20f8ed566618ad508cf060c38
+	Count: 3
+	Algo: RSA
+	ID: 6089fe963eaacdd8205bd2a0
+		Subject: C=NO, O=Buypass AS-983163327, CN=Buypass Class 2 CA 2
+		Issuer: C=NO, O=Buypass AS-983163327, CN=Buypass Class 2 Root CA
+		Validity: 2019-03-25T12:17:10Z - 2030-10-26T09:16:17Z
+		Valid Roots: ['openjdk', 'oracle_java', 'apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+	ID: 608a02263eaacdd820652cb1
+		Subject: C=NO, O=Buypass AS-983163327, CN=Buypass Class 2 CA 2
+		Issuer: C=NO, O=Buypass AS-983163327, CN=Buypass Class 2 Root CA
+		Validity: 2010-10-26T10:16:17Z - 2030-10-26T10:16:17Z
+		Valid Roots: ['microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java', 'apple', 'google_aosp']
+	ID: 608a02603eaacdd82065c208
+		Subject: C=NO, O=Buypass AS-983163327, CN=Buypass Class 2 CA 2
+		Issuer: C=NO, O=Buypass AS-983163327, CN=Buypass Class 2 Root CA
+		Validity: 2016-12-02T10:00:00Z - 2030-10-26T09:16:17Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java']
+
+fingerprint_sha256: 56fcaf838f9b3846c8e9a3bb2b6f22a15b147dc90ba8248aaa522a653101fee1
+	Count: 2
+	Algo: RSA
+	ID: 6089feb93eaacdd8205c3181
+		Subject: C=FR, O=DHIMYOTIS, OU=0002 48146308100036, organizationIdentifier=NTRFR-48146308100036, CN=Certigna Services CA
+		Issuer: C=FR, O=Dhimyotis, CN=Certigna
+		Validity: 2015-11-25T11:33:52Z - 2025-11-22T11:33:52Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+	ID: 6089feb93eaacdd8205c3183
+		Subject: C=FR, O=DHIMYOTIS, OU=0002 48146308100036, organizationIdentifier=NTRFR-48146308100036, CN=Certigna Services CA
+		Issuer: C=FR, O=Dhimyotis, OU=0002 48146308100036, CN=Certigna Root CA
+		Validity: 2015-11-25T11:37:21Z - 2033-06-03T11:37:21Z
+		Valid Roots: ['microsoft_windows', 'mozilla_nss']
+
+fingerprint_sha256: 952c2039c0243eb515dd73d83fc3643184874feb0862a9837731ed9b4742e17a
+	Count: 2
+	Algo: RSA
+	ID: 6089ffd23eaacdd8205f1a98
+		Subject: C=ES, O=IZENPE S.A., CN=Izenpe.com
+		Issuer: C=ES, O=IZENPE S.A., CN=Izenpe.com
+		Validity: 2007-12-13T13:08:27Z - 2037-12-13T08:27:25Z
+		Valid Roots: ['apple', 'microsoft_windows', 'mozilla_nss', 'google_aosp']
+	ID: 608a020f3eaacdd82064f0e5
+		Subject: C=ES, O=IZENPE S.A., CN=Izenpe.com
+		Issuer: C=ES, O=IZENPE S.A., CN=Izenpe.com
+		Validity: 2007-12-13T13:08:28Z - 2037-12-13T08:27:25Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+
+fingerprint_sha256: 706bb1017c855c59169bad5c1781cf597f12d2cad2f63d1a4aa37493800ffb80
+	Count: 2
+	Algo: RSA
+	ID: 6089fe723eaacdd8205b7258
+		Subject: OU=GlobalSign Root CA - R3, O=GlobalSign, CN=GlobalSign
+		Issuer: OU=GlobalSign Root CA - R3, O=GlobalSign, CN=GlobalSign
+		Validity: 2009-03-18T10:00:00Z - 2029-03-18T10:00:00Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java']
+	ID: 6089fe733eaacdd8205b756f
+		Subject: OU=GlobalSign Root CA - R3, O=GlobalSign, CN=GlobalSign
+		Issuer: C=BE, O=GlobalSign nv-sa, OU=Root CA, CN=GlobalSign Root CA
+		Validity: 2018-09-19T00:00:00Z - 2028-01-28T12:00:00Z
+		Valid Roots: ['microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java', 'apple', 'google_aosp']
+
+fingerprint_sha256: ebc0516375eabe52ae6df367049eb817fd7b0475278837a6530c5934dbdf75a0
+	Count: 2
+	Algo: RSA
+	ID: 608a08e73eaacdd820767772
+		Subject: C=CA, O=AffirmTrust, OU=See www.affirmtrust.com/repository, CN=AffirmTrust Certificate Authority - DV1
+		Issuer: C=US, O=AffirmTrust, CN=AffirmTrust Commercial
+		Validity: 2017-04-07T15:10:56Z - 2030-12-02T04:00:00Z
+		Valid Roots: ['google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java', 'apple']
+	ID: 608a339f3eaacdd820dce23e
+		Subject: C=CA, O=AffirmTrust, OU=See www.affirmtrust.com/repository, CN=AffirmTrust Certificate Authority - DV1
+		Issuer: C=US, O=AffirmTrust, CN=AffirmTrust Commercial
+		Validity: 2019-03-21T20:21:37Z - 2030-12-02T04:00:00Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java']
+
+fingerprint_sha256: e19418ae3455e92720745882d2f9ff572e103088e2ed3bfec24904284110ebf2
+	Count: 2
+	Algo: RSA
+	ID: 6089ff143eaacdd8205d24de
+		Subject: C=NO, O=Buypass AS-983163327, CN=Buypass Class 3 CA 2
+		Issuer: C=NO, O=Buypass AS-983163327, CN=Buypass Class 3 Root CA
+		Validity: 2019-03-25T12:12:16Z - 2030-10-26T08:16:17Z
+		Valid Roots: ['google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java', 'apple']
+	ID: 608a18163eaacdd8209c704c
+		Subject: C=NO, O=Buypass AS-983163327, CN=Buypass Class 3 CA 2
+		Issuer: C=NO, O=Buypass AS-983163327, CN=Buypass Class 3 Root CA
+		Validity: 2016-12-02T09:00:00Z - 2030-10-26T08:16:17Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java']
+
+fingerprint_sha256: cc4f176018f761fea75cd55d4ebcb4b57531e8b1aa21bc276f277bac838ab9ed
+	Count: 2
+	Algo: RSA
+	ID: 6089fe833eaacdd8205ba29d
+		Subject: C=US, ST=Illinois, L=Chicago, O=Trustwave Holdings, Inc., CN=Trustwave Extended Validation SHA256 CA, Level 1, emailAddress=ca@trustwave.com
+		Issuer: C=US, O=SecureTrust Corporation, CN=SecureTrust CA
+		Validity: 2016-09-01T14:35:34Z - 2024-09-29T14:35:34Z
+		Valid Roots: ['microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java', 'apple', 'google_aosp']
+	ID: 608a21f93eaacdd820b45c40
+		Subject: C=US, ST=Illinois, L=Chicago, O=Trustwave Holdings, Inc., CN=Trustwave Extended Validation SHA256 CA, Level 1, emailAddress=ca@trustwave.com
+		Issuer: C=US, O=SecureTrust Corporation, CN=SecureTrust CA
+		Validity: 2014-10-13T18:17:39Z - 2024-10-10T18:17:39Z
+		Valid Roots: ['google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java', 'apple']
+
+fingerprint_sha256: df8acb0e6c79378b4596efc54f2b998decd7c614789613a6c66499f4f8f2a6ba
+	Count: 2
+	Algo: RSA
+	ID: 608a033a3eaacdd82067f788
+		Subject: C=BR, O=Rede Nacional de Ensino e Pesquisa - RNP, CN=RNP ICPEdu OV SSL CA 2019
+		Issuer: C=BE, O=GlobalSign nv-sa, CN=Trusted Root TLS CA SHA256 G3
+		Validity: 2020-07-05T00:00:00Z - 2026-05-15T00:00:00Z
+		Valid Roots: ['apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java']
+	ID: 608a082a3eaacdd82074996d
+		Subject: C=BR, O=Rede Nacional de Ensino e Pesquisa - RNP, OU=Gerencia de Servicos (GSer), L=Rio de Janeiro, ST=Rio de Janeiro, CN=RNP ICPEdu OV SSL CA 2019
+		Issuer: C=BE, OU=Trusted Root, O=GlobalSign nv-sa, CN=Trusted Root CA SHA256 G2
+		Validity: 2019-05-15T00:00:00Z - 2026-05-15T00:00:00Z
+		Valid Roots: ['openjdk', 'oracle_java', 'apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+
+fingerprint_sha256: e34d058a6f4841ee23f868fe0a2e11e38337800e89d7f4d187c2e53d22c5dc8f
+	Count: 2
+	Algo: RSA
+	ID: 6089fe743eaacdd8205b78ca
+		Subject: C=US, O=HydrantID (Avalanche Cloud Corporation), CN=HydrantID SSL ICA G2
+		Issuer: C=BM, O=QuoVadis Limited, CN=QuoVadis Root CA 2
+		Validity: 2013-12-17T14:25:10Z - 2023-12-17T14:25:10Z
+		Valid Roots: ['microsoft_windows', 'mozilla_nss', 'openjdk', 'oracle_java', 'apple', 'google_aosp']
+	ID: 608a00da3eaacdd82061ccf3
+		Subject: C=US, O=HydrantID (Avalanche Cloud Corporation), CN=HydrantID SSL ICA G2
+		Issuer: C=BM, O=QuoVadis Limited, CN=QuoVadis Root CA 2
+		Validity: 2021-01-14T19:31:06Z - 2023-12-17T14:25:10Z
+		Valid Roots: ['mozilla_nss', 'openjdk', 'oracle_java', 'apple', 'google_aosp', 'microsoft_windows']
+
+fingerprint_sha256: 3042560d023459706b11d62d8f5bb559dc03dba5ec217410fb9ecd9205eca067
+	Count: 2
+	Algo: RSA
+	ID: 6089fecf3eaacdd8205c6d8e
+		Subject: C=ES, O=FNMT-RCM, OU=AC Componentes Informáticos
+		Issuer: C=ES, O=FNMT-RCM, OU=AC RAIZ FNMT-RCM
+		Validity: 2013-06-24T10:52:59Z - 2028-06-24T10:52:59Z
+		Valid Roots: ['microsoft_windows', 'mozilla_nss', 'apple', 'google_aosp']
+	ID: 608a0af23eaacdd8207ba063
+		Subject: C=ES, O=FNMT-RCM, OU=AC Componentes Informáticos
+		Issuer: C=ES, O=FNMT-RCM, OU=AC RAIZ FNMT-RCM
+		Validity: 2013-06-27T14:17:50Z - 2028-06-27T14:17:50Z
+		Valid Roots: ['microsoft_windows', 'mozilla_nss', 'apple', 'google_aosp']
+
+fingerprint_sha256: e42f24bd4d37f4aa2e56b979d83d1e65219fe0e9e3a382a1b3cb66c93955de75
+	Count: 2
+	Algo: RSA
+	ID: 6089fe7b3eaacdd8205b8d49
+		Subject: C=IL, O=StartCom Ltd., OU=Secure Digital Certificate Signing, CN=StartCom Certification Authority
+		Issuer: C=IL, O=StartCom Ltd., OU=Secure Digital Certificate Signing, CN=StartCom Certification Authority
+		Validity: 2006-09-17T19:46:36Z - 2036-09-17T19:46:36Z
+		Valid Roots: ['apple']
+	ID: 608a03c63eaacdd820695e71
+		Subject: C=IL, O=StartCom Ltd., OU=Secure Digital Certificate Signing, CN=StartCom Certification Authority
+		Issuer: C=IL, O=StartCom Ltd., OU=Secure Digital Certificate Signing, CN=StartCom Certification Authority
+		Validity: 2006-09-17T19:46:37Z - 2036-09-17T19:46:36Z
+		Valid Roots: ['apple']
+
+fingerprint_sha256: 5586701a2264ab734da356112364468924c8d66a93586f330dc45fd7f28037a2
+	Count: 2
+	Algo: RSA
+	ID: 6089fe723eaacdd8205b7182
+		Subject: C=US, O=Entrust, Inc., OU=See www.entrust.net/legal-terms, OU=(c) 2014 Entrust, Inc. - for authorized use only, CN=Entrust Certification Authority - L1M
+		Issuer: C=US, O=Entrust, Inc., OU=See www.entrust.net/legal-terms, OU=(c) 2009 Entrust, Inc. - for authorized use only, CN=Entrust Root Certification Authority - G2
+		Validity: 2014-12-15T15:25:03Z - 2030-10-15T15:55:03Z
+		Valid Roots: ['mozilla_nss', 'openjdk', 'oracle_java', 'apple', 'google_aosp', 'microsoft_windows']
+	ID: 6089ffaa3eaacdd8205eb0d7
+		Subject: C=US, O=Entrust, Inc., OU=See www.entrust.net/legal-terms, OU=(c) 2014 Entrust, Inc. - for authorized use only, CN=Entrust Certification Authority - L1M
+		Issuer: C=US, O=Entrust, Inc., OU=www.entrust.net/CPS is incorporated by reference, OU=(c) 2006 Entrust, Inc., CN=Entrust Root Certification Authority
+		Validity: 2014-11-18T20:59:32Z - 2024-11-19T06:33:02Z
+		Valid Roots: ['openjdk', 'oracle_java', 'apple', 'google_aosp', 'microsoft_windows', 'mozilla_nss']
+
+Total Items: 39
+--------------------------------------------------
